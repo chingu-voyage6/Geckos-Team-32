@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Recipes</title>
+</head>
+<body>
+
+    <header>
+        <a href="index.html"> <div class="head">Home</div> </a>
+    </header>
+
+   <div class="content">
+        <form id='recipes'>
+                <input type="text" name="title" placeholder="Recipe name">
+                <input type="text" name="ingredients" placeholder="Ingredients">
+                <input type="text" name="directions"  placeholder="Directions">
+                <button>Add Recipe</button>
+            </form>
+    </div>
+            <h1><span id="myspan"></span> recipes</h1>
+            <div class='content'>
+                    <div>
+                        <ul id='personal-list'>
+            
+                        </ul>
+                    </div>
+                </div>
+
+
+   <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyA6Sd_uddKFfUxotMmSmYBLxkGUjmNdy7E",
+            authDomain: "to-do-list-recipes.firebaseapp.com",
+            databaseURL: "https://to-do-list-recipes.firebaseio.com",
+            projectId: "to-do-list-recipes",
+            storageBucket: "to-do-list-recipes.appspot.com",
+            messagingSenderId: "454775970537"
+        };
+        firebase.initializeApp(config);
+        const firedb = firebase.firestore();
+        firedb.settings({ timestampsInSnapshots: true });
+        </script>
+    
+        <script src="app.js"></script>
+</body>
+</html>

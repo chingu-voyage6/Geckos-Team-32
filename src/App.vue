@@ -2,18 +2,28 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
+    <div></div>
+    test
   </div>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
-  name: 'App',
+  name: "App",
+  methods: {
+    ...mapActions(["loadRecipies"])
+  },
+  created() {
+    this.loadRecipies()
+  }
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

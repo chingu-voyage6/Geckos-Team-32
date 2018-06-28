@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import { db } from '@/modules/firebase';
+
+
     export default {
     }
 </script>

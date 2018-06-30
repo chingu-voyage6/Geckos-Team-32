@@ -52,10 +52,3 @@ function checkLocation() {
         }
     });
 }
-
-db.collection('recipe').get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        let docData=doc.data();
-        IsUerExist = false;
-    });
-});

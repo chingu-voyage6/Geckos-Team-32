@@ -1,8 +1,10 @@
 <html>
 
 <head>
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-firestore.js"></script>
+    <!--<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-firestore.js"></script>-->
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
 </head>
 
 <body>
@@ -13,11 +15,11 @@
     <div style="text-align: center">
         <form class='newUser' method="GET" style="display: inline-block">
             <label for="Name">Enter user name:&nbsp;</label>
-            <input id='newUserName' type="text" name="Name" required title="Enter user name" style="margin-left: 46px">
+            <input id='newUserName' type="text" name="Name" title="Enter user name" style="margin-left: 46px">
             <br>
             <br>
             <label for="familyName">Enter user family name:&nbsp;</label>
-            <input id='newUserFamilyName' type="text" name="familyName" required title="Enter user name">
+            <input id='newUserFamilyName' type="text" name="familyName" title="Enter user name">
             <br>
             <br>
             <label for="email">Enter user e-mail:</label>
@@ -25,16 +27,16 @@
             <br>
             <br>
             <label for="country">Enter user country:</label>
-            <input id='newUserCountry' type="text" name="country" required title="Enter user name" style="margin-left: 35px">
+            <input id='newUserCountry' type="text" name="country" title="Enter user name" style="margin-left: 35px">
             <br>
             <br>
             <label for="city">Enter user city:</label>
-            <input id='newUserCity' type="text" name="city" required title="Enter user name" style="margin-left: 60px">
+            <input id='newUserCity' type="text" name="city" title="Enter user name" style="margin-left: 60px">
 
             
         </form>
         <br>
-        <button id="newUserBtn" style="margin-left: 260px">Создать</button>
+        <button id="newUserBtn" style="margin-left: 260px">Create</button>
     </div>
     <div id='errorMsg' style="text-align: center ;color: red"></div>
     <script>

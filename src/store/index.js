@@ -30,13 +30,13 @@ export default new Vuex.Store({
           let recepieWithId = { ...doc.data(), id: doc.id };
           return recepieWithId;
         });
-        
+
         context.commit("LOAD_RECIPIES", extractedRecepies);
       });
     },
     addRecipie(context, { Directions = "1test direction", Ingredients = "none11", Title = "Yammy" }) {
       RecipesFireDB.add({ Directions, Ingredients, Title })
-        .then(docRef => { context.commit("ADD_RECIPIE", { Directions, Ingredients, Title, id: docRef.id })})
+        .then(docRef => context.commit("ADD_RECIPIE", { Directions, Ingredients, Title, id: docRef.id }))
         .catch(error => console.error("Error writing document: ", error))
     }
   }

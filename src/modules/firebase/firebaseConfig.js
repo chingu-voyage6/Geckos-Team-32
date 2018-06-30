@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyA6Sd_uddKFfUxotMmSmYBLxkGUjmNdy7E",
-  authDomain: "to-do-list-recipes.firebaseapp.com",
-  databaseURL: "https://to-do-list-recipes.firebaseio.com",
-  projectId: "to-do-list-recipes",
-  storageBucket: "to-do-list-recipes.appspot.com",
-  messagingSenderId: "454775970537"
+  apiKey: "AIzaSyCk9gUCsdTzRraBfnF611_NrtnLqs1dbQM",
+  authDomain: "pieffelleo-6a8c2.firebaseapp.com",
+  databaseURL: "https://pieffelleo-6a8c2.firebaseio.com",
+  projectId: "pieffelleo-6a8c2",
+  storageBucket: "pieffelleo-6a8c2.appspot.com",
+  messagingSenderId: "515193872504"
 };

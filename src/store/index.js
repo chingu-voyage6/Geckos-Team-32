@@ -8,35 +8,35 @@ const RecipesFireDB = fireDb.collection("Recipes");
 
 export default new Vuex.Store({
   state: {
-    recepies: []
+    recepes: []
   },
   getters: {
-    getRecepies(state) {
-      return state.recepies;
+    getRecipes(state) {
+      return state.recepes;
     }
   },
   mutations: {
-    LOAD_RECIPIES(state, loadedRecepies) {
-      state.recepies = loadedRecepies;
+    LOAD_RECIPES(state, loadedRecepies) {
+      state.recepes = loadedRecepies;
     },
-    ADD_RECIPIE(state, newRecipie) {
-      state.recepies.push(newRecipie);
+    ADD_RECIPE(state, newRecipe) {
+      state.recepes.push(newRecipe);
     }
   },
   actions: {
-    loadRecipies(context) {
+    loadRecipes(context) {
       RecipesFireDB.get().then(snapshot => {
-        const extractedRecepies = snapshot.docs.map(doc => {
-          let recepieWithId = { ...doc.data(), id: doc.id };
-          return recepieWithId;
+        const extractedRecepes = snapshot.docs.map(doc => {
+          let recepeWithId = { ...doc.data(), id: doc.id };
+          return recepeWithId;
         });
 
-        context.commit("LOAD_RECIPIES", extractedRecepies);
+        context.commit("LOAD_RECIPES", extractedRecepes);
       });
     },
-    addRecipie(context, { Directions = "1test direction", Ingredients = "none11", Title = "Yammy" }) {
-      RecipesFireDB.add({ Directions, Ingredients, Title })
-        .then(docRef => context.commit("ADD_RECIPIE", { Directions, Ingredients, Title, id: docRef.id }))
+    addRecipe(context, newRecipe) {
+      RecipesFireDB.add(newRecipe)
+        .then(docRef => context.commit("ADD_RECIPE", newRecipe))
         .catch(error => console.error("Error writing document: ", error))
     }
   }

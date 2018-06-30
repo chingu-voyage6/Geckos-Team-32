@@ -1,9 +1,9 @@
 <template>
     <div>
         main
-        <button @click="addRecipie">Add recipie</button>
-        <div v-for="recepie in getRecepies">
-            {{ recepie.id}} | {{recepie.Directions }}
+        <button @click="addNewRecipe">Add recipe</button>
+        <div v-for="recipe in getRecipes">
+            {{ recipe.id}} | {{recipe.Directions }}
         </div>
     </div>
 </template>
@@ -19,10 +19,24 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getRecepies"])
+    ...mapGetters(["getRecipes"])
   },
   methods: {
-    ...mapActions(["addRecipie"])
+    ...mapActions({
+        addRecipeToDB:"addRecipe"
+      }),
+    addNewRecipe(){
+      let newItem = {
+        User: "Oleg",
+        Title: "my title",
+        Directions: "just do it!",
+        Ingridients: {
+          sugar: 0.5,
+          water: 0.5
+        }
+      } 
+      this.addRecipeToDB(newItem);
+    }
   },
   mounted() {}
 };

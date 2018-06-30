@@ -13,10 +13,10 @@ import { mapActions } from "vuex";
 export default {
   name: "App",
   methods: {
-    ...mapActions(["loadRecipies"])
+    ...mapActions(["loadRecipes"])
   },
   created() {
-    this.loadRecipies()
+    this.loadRecipes()
   }
 };
 </script>

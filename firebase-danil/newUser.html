@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-firestore.js"></script>
+</head>
+
+<body>
+    <img src="/images/add_user.png" style="display: block; margin-left: auto; margin-right: auto; height: 100px;">
+    <div style="text-align: center; margin-left: auto; margin-right: auto">Create new user.</div>
+    <br>
+    <br>
+    <div style="text-align: center">
+        <form class='newUser' method="GET" style="display: inline-block">
+            <label for="Name">Enter user name:&nbsp;</label>
+            <input id='newUserName' type="text" name="Name" required title="Enter user name" style="margin-left: 46px">
+            <br>
+            <br>
+            <label for="familyName">Enter user family name:&nbsp;</label>
+            <input id='newUserFamilyName' type="text" name="familyName" required title="Enter user name">
+            <br>
+            <br>
+            <label for="email">Enter user e-mail:</label>
+            <input id='newUserEmail' type="email" name="email" required title="Enter user name" style="margin-left: 43px">
+            <br>
+            <br>
+            <label for="country">Enter user country:</label>
+            <input id='newUserCountry' type="text" name="country" required title="Enter user name" style="margin-left: 35px">
+            <br>
+            <br>
+            <label for="city">Enter user city:</label>
+            <input id='newUserCity' type="text" name="city" required title="Enter user name" style="margin-left: 60px">
+
+            
+        </form>
+        <br>
+        <button id="newUserBtn" style="margin-left: 260px">Создать</button>
+    </div>
+    <div id='errorMsg' style="text-align: center ;color: red"></div>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAQrH2lF210fWd4GZipcSvwfk3bZo4SJMU",
+            authDomain: "danil-d47d2.firebaseapp.com",
+            databaseURL: "https://danil-d47d2.firebaseio.com",
+            projectId: "danil-d47d2",
+            storageBucket: "danil-d47d2.appspot.com",
+            messagingSenderId: "314197512072"
+        };
+        firebase.initializeApp(config);
+        const db = firebase.firestore();
+        db.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="/newUser.js"></script>
+</body>
+
+</html>

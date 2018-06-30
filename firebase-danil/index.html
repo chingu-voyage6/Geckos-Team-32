@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-firestore.js"></script>
+
+</head>
+
+<body>
+    <h1>Recipies list</h1>
+    <div class="content">
+
+        <form class="Add recipe">
+
+        </form>
+    </div>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAQrH2lF210fWd4GZipcSvwfk3bZo4SJMU",
+            authDomain: "danil-d47d2.firebaseapp.com",
+            databaseURL: "https://danil-d47d2.firebaseio.com",
+            projectId: "danil-d47d2",
+            storageBucket: "danil-d47d2.appspot.com",
+            messagingSenderId: "314197512072"
+        };
+        firebase.initializeApp(config);
+        const db = firebase.firestore();
+        db.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="/app.js"></script>
+</body>
+
+</html>

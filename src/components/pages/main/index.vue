@@ -15,7 +15,7 @@ export default {
   name: "MainPage",
   data() {
     return {
-      recepies: []
+      recipes: []
     };
   },
   computed: {

@@ -38,12 +38,11 @@ export default new Vuex.Store({
     removeRecipe(context, docId){
       RecipesFireDB.doc(docId).delete()
         .catch(error => console.error("Error deleting document: ", error));
-    
     },
     fireDbChangesListner(context) {
+      const changeHandler = changeHandlersMap();
       RecipesFireDB.onSnapshot(snapshot => {
         const changes = snapshot.docChanges();
-        const changeHandler = changeHandlersMap();
         changes.forEach(change =>
           changeHandler[change.type](context, change)
         );

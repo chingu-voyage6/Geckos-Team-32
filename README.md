@@ -37,11 +37,13 @@ import MainPage from '*/main/index';
 ### how to add alias?
 Alliases are defined in file `build/webpack.base.conf.js`. just search `alias` keyworld
 
-# deploying to githubIO
- For deploy purposes was added vue-cli-ghpages module as dev depencency, so install it once by runing
+# deploy to github-pages
+ For deploy purposes was added vue-cli-ghpages module as dev depencency, so install it once by runing:
+
     npm i
 
-To build and deploy project run the command
+To build and deploy project run the command:
+
     npm run deploy
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

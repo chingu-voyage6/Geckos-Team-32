@@ -19,9 +19,6 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    LOAD_RECIPES(state, loadedRecepies) {
-      state.recipes = loadedRecepies;
-    },
     ADD_RECIPE(state, newRecipe) {
       state.recipes.push(newRecipe);
     },

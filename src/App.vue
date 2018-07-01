@@ -13,10 +13,12 @@ import { mapActions } from "vuex";
 export default {
   name: "App",
   methods: {
-    ...mapActions(["loadRecipes"])
+    ...mapActions([
+        "fireDbChangesListner"
+      ])
   },
   created() {
-    this.loadRecipes()
+    this.fireDbChangesListner();
   }
 };
 </script>

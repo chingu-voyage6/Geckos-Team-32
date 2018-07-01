@@ -2,8 +2,8 @@
     <div>
         main
         <button @click="addNewRecipe">Add recipe</button>
-        <div v-for="recipe in getRecipes">
-            {{ recipe.id}} | {{recipe.Directions }}
+        <div v-for="recipe in getRecipes" @click = "removeRecipe(recipe.id)">
+            {{ recipe.id }} | {{recipe.Directions }}
         </div>
     </div>
 </template>
@@ -23,12 +23,13 @@ export default {
   },
   methods: {
     ...mapActions({
-        addRecipeToDB:"addRecipe"
+        addRecipeToDB: "addRecipe",
+        removeRecipe: "removeRecipe"
       }),
     addNewRecipe(){
       let newItem = {
         User: "Oleg",
-        Title: "my title",
+        Title: "Sweet water",
         Directions: "just do it!",
         Ingridients: {
           sugar: 0.5,

@@ -8,36 +8,53 @@ const RecipesFireDB = fireDb.collection("Recipes");
 
 export default new Vuex.Store({
   state: {
-    recepes: []
+    recipes: []
   },
   getters: {
     getRecipes(state) {
-      return state.recepes;
+      return state.recipes.map(doc => {
+        let recepeWithId = { ...doc.data(), id: doc.id };
+        return recepeWithId;
+      });
     }
   },
   mutations: {
     LOAD_RECIPES(state, loadedRecepies) {
-      state.recepes = loadedRecepies;
+      state.recipes = loadedRecepies;
     },
     ADD_RECIPE(state, newRecipe) {
-      state.recepes.push(newRecipe);
+      state.recipes.push(newRecipe);
+    },
+    REMOVE_RECIPE(state, recipe){
+      const index = state.recipes.findIndex(item => item.id === recipe.id);
+      state.recipes.splice(index, 1);
     }
   },
   actions: {
-    loadRecipes(context) {
-      RecipesFireDB.get().then(snapshot => {
-        const extractedRecepes = snapshot.docs.map(doc => {
-          let recepeWithId = { ...doc.data(), id: doc.id };
-          return recepeWithId;
-        });
-
-        context.commit("LOAD_RECIPES", extractedRecepes);
-      });
-    },
     addRecipe(context, newRecipe) {
       RecipesFireDB.add(newRecipe)
-        .then(docRef => context.commit("ADD_RECIPE", newRecipe))
-        .catch(error => console.error("Error writing document: ", error))
+        .catch(error => console.error("Error adding document: ", error));
+    },
+    removeRecipe(context, docId){
+      RecipesFireDB.doc(docId).delete()
+        .catch(error => console.error("Error deleting document: ", error));
+    
+    },
+    fireDbChangesListner(context) {
+      RecipesFireDB.onSnapshot(snapshot => {
+        const changes = snapshot.docChanges();
+        const changeHandler = changeHandlersMap();
+        changes.forEach(change =>
+          changeHandler[change.type](context, change)
+        );
+      });
     }
   }
 });
+
+function changeHandlersMap() {
+  return {
+    added: (context, change) => context.commit("ADD_RECIPE", change.doc),
+    removed: (context, change) => context.commit("REMOVE_RECIPE", change.doc)
+  };
+}

@@ -17,7 +17,6 @@
   "dependencies": {
     "firebase": "^5.1.0",
     "vue": "^2.5.2",
-    "vue-cli-ghpages": "^1.0.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
@@ -75,7 +74,8 @@
     "webpack": "^3.6.0",
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "vue-cli-ghpages": "^1.0.0"
   },
   "engines": {
     "node": ">= 6.0.0",

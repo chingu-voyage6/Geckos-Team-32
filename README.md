@@ -1,6 +1,7 @@
 
 # Geckos-Team-32
 Add-project-description-here | Chingu Voyage-6 | https://chingu.io/
+
 [Live demo](https://chingu-voyage6.github.io/Geckos-Team-32/#/)
 > A Vue.js project
 

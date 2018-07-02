@@ -25,7 +25,8 @@ newUserBtn.addEventListener("click", () => {
             checkLocation();
         }
 
-        if (locationFindedItem == '') {
+        if (locationFindedItem != '' && newUserCity.value.trim() != '' && newUserCountry.value.trim() != '') {
+            console.log("4 " + locationFindedItem);
             //db.collection('locations').add({
             //    city: newUserCity.value.trim(),
             //    country: newUserCountry.value.trim()
@@ -38,11 +39,8 @@ newUserBtn.addEventListener("click", () => {
 
 function checkLocation() {
 
-    console.log(newUserCity.value.trim());
-    console.log(newUserCountry.value.trim());
-
     let localionItem = db.collection('locations');
-    localionItem = localionItem.where("city", "==", newUserCountry.value.trim());
+    localionItem = localionItem.where("city", "==", newUserCity.value.trim());
     console.log(localionItem);
     localionItem = localionItem.where('country', '==', newUserCountry.value.trim());
     console.log(localionItem);

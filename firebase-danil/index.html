@@ -7,11 +7,38 @@
 </head>
 
 <body>
-    <h1>Recipies list</h1>
-    <div class="content">
+    <header>
+        <div id="links" style="margin-left:90vw">
+            <a href="/newUser.html">Create a new user</a>
+        </div>
+    </header>
+    <h2>
+        <form id="loginUserForm" method="GET" style="display: inline-block">
+            <label for="userEmail">Enter user e-mail:&nbsp;</label>
+            <input id='userEmail' type="email" required name="userEmail" placeholder="User e-mail" style="margin-left: 46px">
 
+        </form>
+        <button id="showRecipesBtn">Show recipes</button>
+        <div id='errorMsg' style="text-align: center ;color: red"></div>
+        <table style="border: 1px solid black;">
+
+            <th style="border: 1px solid black;">User e-mail</th>
+            <th style="border: 1px solid black;">User name</th>
+            <th style="border: 1px solid black;">User family name</th>
+            <th style="border: 1px solid black;">User location</th>
+
+            <tr style="border: 1px solid black;">
+            <td id="userEmailTD" style="border: 1px solid black;"></td>
+            <td id="userNameTD" style="border: 1px solid black;"></td>
+            <td id="userFNTD" style="border: 1px solid black;"></td>
+            <td id="userLocTD" style="border: 1px solid black;"></td>
+            </tr>
+        </table>
+    </h2>
+
+    <h1>Recipes list</h1>
+    <div class="content" style="margin-top: 50px">
         <form class="Add recipe">
-
         </form>
     </div>
     <script>

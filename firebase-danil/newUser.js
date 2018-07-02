@@ -10,29 +10,30 @@ const newUserBtn = document.querySelector("#newUserBtn");
 var locationFindedItem = '';
 var IsUerExist = false;
 
-newUserBtn.addEventListener("click", function () {
-    
-    checkUser();
-    if (!IsUerExist) {
-        checkLocation();
-    }
-    else {
-        errMsg.textContent = "The user with e-mail:" + newUserEmail.value.trim() + " is already exist!";
-    }
-});
 
-function checkUser() {
-
+newUserBtn.addEventListener("click", () => {
     let userItem = db.collection('users').where('email', '==', newUserEmail.value.trim());
+    console.log("1 " + userItem);
     userItem.get().then(function (snapshot) {
+        console.log("2 " + snapshot);
         if (snapshot.docs.length > 0) {
-            IsUerExist = true;
+            errMsg.textContent = "The user with e-mail:" + newUserEmail.value.trim() + " is already exist!";
+            //return IsUerExist;
+        } else {
+
+            console.log("3 " + snapshot.docs.length);
+            checkLocation();
+        }
+
+        if (locationFindedItem == '') {
+            //db.collection('locations').add({
+            //    city: newUserCity.value.trim(),
+            //    country: newUserCountry.value.trim()
+            //})
+
         }
     });
-    
-    console.log(IsUerExist);
-}
-
+});
 
 
 function checkLocation() {
@@ -41,8 +42,10 @@ function checkLocation() {
     console.log(newUserCountry.value.trim());
 
     let localionItem = db.collection('locations');
-    localionItem = localionItem.where('city', '==', newUserCity.value.trim());
+    localionItem = localionItem.where("city", "==", newUserCountry.value.trim());
+    console.log(localionItem);
     localionItem = localionItem.where('country', '==', newUserCountry.value.trim());
+    console.log(localionItem);
     localionItem.get().then((snapshot) => {
         if (snapshot.docs.length > 0) {
             doc = snapshot.docs[0];
@@ -52,3 +55,12 @@ function checkLocation() {
         }
     });
 }
+
+db.collection('recipe').get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        let docData = doc.data();
+        IsUerExist = false;
+    });
+});
+
+

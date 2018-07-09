@@ -25,7 +25,7 @@ header{
     border-radius: 5px; 
 }
 
-h1{
+h1, h2{
     color: #fff;
     font-size: 64px;
     letter-spacing: 2px;
@@ -76,6 +76,7 @@ li span:nth-child(1){
     color: #555;
     border-bottom: 1px solid  #555;
 }
+
 li span:nth-child(2){
     font-size: 18px;
     font-style: italic;
@@ -93,6 +94,10 @@ li div{
     text-align: center;
     cursor:  pointer;
     font-family: ubuntu;
+}
+.edit{
+  padding: 1px;
+  max-width: 60px;
 }
 
 form input{
@@ -127,4 +132,12 @@ button{
     letter-spacing: 1px;
     color: #999;
 
+}
+
+#errorMsg{
+    text-align: center ;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: red;
+    margin-bottom: 10px;
 }

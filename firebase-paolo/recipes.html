@@ -22,7 +22,8 @@
                 <button>Add Recipe</button>
             </form>
     </div>
-            <h1><span id="myspan"></span> recipes</h1>
+
+    <h1><span id="myspan"></span> recipes</h1>
             <div class='content'>
                     <div>
                         <ul id='personal-list'>
@@ -30,7 +31,6 @@
                         </ul>
                     </div>
                 </div>
-
 
    <script>
         // Initialize Firebase
@@ -43,8 +43,8 @@
             messagingSenderId: "454775970537"
         };
         firebase.initializeApp(config);
-        const firedb = firebase.firestore();
-        firedb.settings({ timestampsInSnapshots: true });
+        const db = firebase.firestore();
+        db.settings({ timestampsInSnapshots: true });
         </script>
     
         <script src="app.js"></script>

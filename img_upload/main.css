@@ -1,39 +1,49 @@
-#dropbox{
-    width: 200px;
-    height: 200px;
-    background-color: lightgrey;
-    border-width: 2px;
-    border-color: gray;
-    border-style: dashed;
-
+#dropbox {
+  width: 200px;
+  height: 200px;
+  background-color: lightgrey;
+  border-width: 2px;
+  border-color: gray;
+  border-style: dashed;
 }
 
-#addImage
-{
-    width: 70px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+#addImage {
+  width: 70px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#header{
-    text-align: center;
+#header {
+  text-align: center;
 }
 
-#fileSelect
-{
-    display: block; text-align: center;
-
+#fileSelect {
+  display: block;
+  text-align: center;
 }
 
-.progress-bar{
-    width: 200px;
-    position: relative;
-    height: 8px;
-    margin-top: 4px;
-  }
-  .progress-bar .progress{
-    height: 8px;
-    background-color: gray;
-    width: 0;
-  }
+.progress-bar {
+  width: 200px;
+  position: fixed;
+  height: 8px;
+  margin-top: 5px;
+}
+.progress-bar .progress {
+  height: 8px;
+  background-color: gray;
+  width: 0;
+}
+
+#gallery {
+  margin-top: 15px;
+  position: fixed;
+  display: grid;
+  grid-template-columns: 150px auto;
+  grid-template-rows: auto;
+}
+
+#recipeImg {
+  width: 145px;
+  margin-right: 5px;
+}

@@ -11,7 +11,7 @@ fileSelect.addEventListener(
     if (fileElem) {
       fileElem.click();
     }
-    e.preventDefault(); // prevent navigation to "#"
+    e.preventDefault(); 
   },
   false
 );
@@ -81,10 +81,14 @@ function uploadFile(file, fileNumber) {
       document.getElementById("header").style.color = "yellowgreen";
       document.getElementById("progress").style.width = 0;
     }
+    else{
+      document.getElementById("header").textContent = "Something goes wrong.";
+      document.getElementById("header").style.color = "red";
+    }
   };
 
   fd.append("upload_preset", unsignedUploadPreset);
-  fd.append("tags", "test"); // Optional - add tag for image admin in Cloudinary
+  fd.append("tags", String(timeStamp));
   fd.append("file", file);
   fd.append("folder", String(timeStamp));
   fd.append("public_id", String(fileNumber));

@@ -75,8 +75,8 @@ function uploadFile(file, fileNumber) {
       img.src = tokens.join("/");
       img.alt = response.public_id;
       img.id = "recipeImg";
-      document.getElementById("gallery").appendChild(img);
-      document.getElementById("header").textContent =
+      document.getElementBy
+      document.getElementById("gallery").appendChild(img);Id("header").textContent =
         "Upload completed successfully.";
       document.getElementById("header").style.color = "yellowgreen";
       document.getElementById("progress").style.width = 0;

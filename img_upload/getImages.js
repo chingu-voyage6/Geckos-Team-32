@@ -1,5 +1,3 @@
-const cloudName = "dkltr3zmo";
-const unsignedUploadPreset = "kj42vsaw";
 
 // *********** Get files ******************** //
 function getFiles() {
@@ -15,7 +13,7 @@ function getFiles() {
 
 function getImages(recipieId) {
   // Create a request variable and assign a new XMLHttpRequest object to it.
-  var request = new XMLHttpRequest();
+  //var request = new XMLHttpRequest();
 
   // Open a new connection, using the GET request on the URL endpoint
   //request.open(
@@ -34,15 +32,21 @@ function getImages(recipieId) {
   // };
   // Send request
   // request.send();
-
-  for (i == 1; i <= 10; i++) {
+  //1531390276433
+  for (i = 1; i <= 10; i++) {
     let imgExist = checkUrl(
-      "https://res.cloudinary.com/dkltr3zmo/1531390276433/" + String(i)
+      "https://res.cloudinary.com/dkltr3zmo/"+recipieId+"/" + String(i) + ".jpg"
     );
     if (imgExist) {
+      var img = new Image(); // HTML5 Constructor
+      img.src = "https://res.cloudinary.com/dkltr3zmo/"+recipieId+"/" + String(i) + ".jpg";
+      img.alt = "recipeImg"+String(i);
+      img.id = "recipeImg"+String(i);
+      let col=document.querySelector(".column");
+      col.appendChild(img);
       console.log(
-        "https://res.cloudinary.com/dkltr3zmo/1531390276433/" +
-          String(i) +
+        "https://res.cloudinary.com/dkltr3zmo/"+recipieId+"/" +
+          String(i) + ".jpg" +
           "-Exist!"
       );
     }
@@ -58,7 +62,8 @@ function checkUrl(url) {
   }
 
   if (request) {
-    request.open("GET", url);
+    request.open("GET", url, false);
+    request.send(); 
     if (request.status == 200) {
       return true;
     }

@@ -1,7 +1,11 @@
 <template>
     <div>
-        main
-        <button @click="addNewRecipe">Add recipe</button>
+        <MainHeader></MainHeader>
+        <img src="../images/header-img.jpg" class="headerImg">
+
+        <MainFooter class="footer"></MainFooter>
+       
+       <button @click="addNewRecipe">Add recipe</button>
         <div class="grid-container">
             <recipe-item v-for="recipe in getRecipes" :key="recipe.id"
                         v-bind:recipeData="recipe"
@@ -13,11 +17,15 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import RecipeItem from "./Recipe-item";
+import MainHeader from "+/MainHeader"
+import MainFooter from "+/MainFooter"
 
 export default {
   name: "MainPage",
   components: {
-    RecipeItem
+    RecipeItem,
+    MainHeader,
+    MainFooter
   },
   data() {
     return {
@@ -55,5 +63,13 @@ export default {
   display: grid;
   grid-template-columns: auto auto auto;
   grid-gap: 20px;
+}
+.headerImg{
+    width: 100%;
+    height: 400px;
+}
+.footer{
+    position: relative;
+    top: 800px;
 }
 </style>

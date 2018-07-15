@@ -1,0 +1,147 @@
+body{
+    background: #7d79bb;
+    font-family: ubuntu;
+}
+
+a{
+color:#7d79bb;
+text-decoration: none;
+}
+
+a:hover {
+    color: #b8599a;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.head{
+    margin: 20px;
+    background: #e6e6e6;
+    padding: 1em 2em;
+    border-radius: 5px; 
+}
+
+h1, h2{
+    color: #fff;
+    font-size: 64px;
+    letter-spacing: 2px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.content{
+    background: #fff;
+    max-width: 960px;
+    margin: 30px auto;
+    padding:  20px 30px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+
+ul{
+    list-style-type: none;
+    margin: 3em 1em;
+    padding: 1em;
+}
+
+li{
+    padding: 1em;
+    background: #f6f6f6;
+    font-size: 20px;
+    color: #999;
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: justify;
+    border: 1px solid#88236f;
+    border-radius: 10px;
+    margin: 1em;
+}
+
+li:child{
+    padding: 20px;
+    background: #f2f2f2;
+}
+
+li span{
+    display: block;
+}
+
+li span:nth-child(1){
+    font-size: 24px;
+    margin-top: 0.5em;
+    color: #555;
+    border-bottom: 1px solid  #555;
+}
+
+li span:nth-child(2){
+    font-size: 18px;
+    font-style: italic;
+    margin: 20px 0;
+    color: #555;
+}
+
+
+li div{
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    width: 40px;
+    height: 5px;
+    text-align: center;
+    cursor:  pointer;
+    font-family: ubuntu;
+}
+.edit{
+  padding: 1px;
+  max-width: 60px;
+}
+
+form input{
+    width: 80%;
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid gray;
+    margin: 1% 1%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+form input:focus{
+    outline: none;
+    border-bottom: 3px solid #88236f;
+    padding-bottom: 8px;
+    transition: all ease 0.2s;
+}
+
+
+button{
+    background: rgb(197, 194, 224);
+    border-radius: 10px;
+    padding: 13px 0;
+    width: 20%;
+    margin-top: 10px;
+    box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
+    font-weight: bold;
+    font-family: ubuntu;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: #999;
+
+}
+
+#errorMsg{
+    text-align: center ;
+    text-transform: uppercase;
+    font-size: 20px;
+    color: red;
+    margin-bottom: 10px;
+}
+
+#user_button{
+    display: none;
+}

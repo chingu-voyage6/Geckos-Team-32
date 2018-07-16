@@ -11,7 +11,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import RecipeItem from "./Recipe-item";
+import RecipeItem from "./RecipeItem";
 
 export default {
   name: "MainPage",

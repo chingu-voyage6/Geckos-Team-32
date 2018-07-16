@@ -1,10 +1,13 @@
 <template>
-  <div class="recipe-item">
-    <router-link :to="{ name:'recipePage', params:recipeData}">open</router-link><br>
-    <span @click="removeRecipe(recipe.id)">X</span><br>
-    <span v-text="recipe.Title"></span><br>
-    <span v-text="recipe.Directions"></span> 
-  </div>
+  <router-link :to="{ name:'recipePage', params:recipeData}" class="link-wrapper">
+    <div class="recipe-item ">
+      <!-- <span @click="removeRecipe(recipe.id)">X</span><br> -->
+      <img :src="require('./default.png')" class="default">
+      <div class="title-wrapper">
+        <span v-text="recipe.Title"></span><br>
+      </div>
+    </div>
+  </router-link> 
 </template>
 
 <script>
@@ -25,6 +28,11 @@ export default {
       recipe: this.recipeData
     };
   },
+  computed:{
+    recipeImage(){
+      return 'url(default.png})'
+    }
+  },
   methods:{
     ...mapActions(["removeRecipe"])
   },
@@ -36,8 +44,31 @@ export default {
 
 <style lang="scss" scoped>
 .recipe-item {
+  display: flex;
   width: 200px;
-  min-height: 100px;
-  background-color: gray;
+  min-height: 200px;
+  border: 3px solid orange;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+.link-wrapper{
+  display: block;
+}
+.title-wrapper{
+  position: absolute;
+  bottom: 0; 
+  width: 100%;
+  padding: 5px 5px 5px 10px;
+  transform: translateY(100%);
+  transition: 150ms ease-out;; 
+}
+.link-wrapper:hover .title-wrapper{
+   transform: translateY(0);
+}
+.default{
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 </style>

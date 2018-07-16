@@ -1,42 +1,33 @@
 <template>
+<div>
     <div class="container-fluid">
-        <div class="row header">
+        <div class="row header-line">
             <div class="col-sm-3">
                 <img src="./imgs/chef.png" class="logo">
             </div>
-
             <div class="col-sm-6  title">
                 <h1 class="titleText">Chez Gourmet</h1>
             </div>
-
             <div class="col-sm-3">
                 <div class="social">
                     <img src="./imgs/fb-icon.png" class="social-icon">
                     <img src="./imgs/pinterest-icon.png" class="social-icon">
                     <img src="./imgs/insta-icon.png" class="social-icon">
-
                 </div>
-                
             </div>
-
-
         </div>
+    </div>
+    <img :src="require('+/imgs/header-img.jpg')" class="hero-img">
     </div>
 </template>
 
-
-
-
 <script>
 export default {
-    
 }
 </script>
 
-
-
 <style>
-.header{
+.header-line{
     /* background-color: silver; */
     height: 100px;
 }
@@ -66,7 +57,12 @@ export default {
     margin:12px;
     position: relative;
     top: 20px;
-    
+}
+
+.hero-img{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
 }
 </style>
 

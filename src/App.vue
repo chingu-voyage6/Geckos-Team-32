@@ -1,21 +1,24 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png">  -->
-    <router-view/>
-    <div></div>
-    test
+    <MainHeader class="header"></MainHeader>
+    <router-view class="content" />
+    <MainFooter class="footer"></MainFooter>
   </div>
 </template>
 
 <script>
+import MainHeader from "+/MainHeader"
+import MainFooter from "+/MainFooter"
 import { mapActions } from "vuex";
 
 export default {
   name: "App",
+  components:{
+    MainHeader,
+    MainFooter
+  },
   methods: {
-    ...mapActions([
-        "fireDbChangesListener"
-      ])
+    ...mapActions(["fireDbChangesListener"])
   },
   created() {
     this.fireDbChangesListener();
@@ -24,12 +27,24 @@ export default {
 </script>
 
 <style>
-/* #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: hsl(210, 29%, 24%);
-  margin-top: 60px;
-} */
+
+#app{
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto ;
+}
+.header{
+  grid-row-start: 1;
+  grid-row-end: 1;
+  min-height: 0
+}
+.content{
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin-bottom: 20px;
+}
+.footer {
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
 </style>

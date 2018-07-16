@@ -16,6 +16,11 @@ export default new Vuex.Store({
         let recipeWithId = { ...doc.data(), id: doc.id };
         return recipeWithId;
       });
+    },
+    getRecipieById(state){
+      return function(id){
+        return state.recipes.find( item=>item.id == id)
+      }
     }
   },
   mutations: {
@@ -32,11 +37,11 @@ export default new Vuex.Store({
       RecipesFireDB.add(newRecipe)
         .catch(error => console.error("Error adding document: ", error));
     },
-    removeRecipe(context, docId){
+    removeRecipe(context, docId) {
       RecipesFireDB.doc(docId).delete()
         .catch(error => console.error("Error deleting document: ", error));
     },
-    fireDbChangesListner(context) {
+    fireDbChangesListener(context) {
       const changeHandler = changeHandlersMap();
       RecipesFireDB.onSnapshot(snapshot => {
         const changes = snapshot.docChanges();

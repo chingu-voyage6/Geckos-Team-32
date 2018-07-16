@@ -1,5 +1,6 @@
 <template>
   <div class="recipe-item">
+    <router-link :to="{ name:'recipePage', params:recipeData}">open</router-link><br>
     <span @click="removeRecipe(recipe.id)">X</span><br>
     <span v-text="recipe.Title"></span><br>
     <span v-text="recipe.Directions"></span> 

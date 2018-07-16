@@ -14,11 +14,11 @@ export default {
   name: "App",
   methods: {
     ...mapActions([
-        "fireDbChangesListner"
+        "fireDbChangesListener"
       ])
   },
   created() {
-    this.fireDbChangesListner();
+    this.fireDbChangesListener();
   }
 };
 </script>

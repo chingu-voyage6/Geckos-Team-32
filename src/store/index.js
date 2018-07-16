@@ -13,8 +13,8 @@ export default new Vuex.Store({
   getters: {
     getRecipes(state) {
       return state.recipes.map(doc => {
-        let recepeWithId = { ...doc.data(), id: doc.id };
-        return recepeWithId;
+        let recipeWithId = { ...doc.data(), id: doc.id };
+        return recipeWithId;
       });
     }
   },

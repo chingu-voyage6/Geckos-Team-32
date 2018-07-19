@@ -16,7 +16,8 @@ export default {
   computed: {
     ...mapGetters(["getRecipieById"]),
     recipe(){
-      return this.getRecipieById(this.$route.params.id)
+      const recipeId = this.$route.params.id;
+      return this.getRecipieById(recipeId);
     }
   },
   mounted() {

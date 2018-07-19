@@ -25,17 +25,14 @@ export default {};
 </script>
 
 <style scoped>
-    .topNav{
-        box-shadow:0 1px 2px rgba(0,0,0,.1);
-        height: 50px;
-        padding: 5px;
-    }
+.topNav {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  height: 50px;
+  padding: 5px;
+}
 
-    h6{
-        border-right: 1px solid silver;
-        font-family: 'Trocchi', serif;
-        
-        
-        
-    }
+h6 {
+  border-right: 1px solid silver;
+  font-family: "Trocchi", serif;
+}
 </style>

@@ -22,47 +22,46 @@
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
 
 <style>
-.header-line{
-    /* background-color: silver; */
-    height: 100px;
+.header-line {
+  /* background-color: silver; */
+  height: 100px;
 }
 
-.logo{
-    height: 80px;
-    position: relative;
-    top:8px;
+.logo {
+  height: 80px;
+  position: relative;
+  top: 8px;
 }
 
-.titleText{
-    text-align: center;
-    /* font-family: 'Prosto One', cursive; */
-    font-family: 'Oleo Script', cursive;
-    font-size: 3.3em;
-    letter-spacing: 3px;
-    position: relative;
-    top:15px;
-    color:rgb(216, 4, 4)
+.titleText {
+  text-align: center;
+  /* font-family: 'Prosto One', cursive; */
+  font-family: "Oleo Script", cursive;
+  font-size: 3.3em;
+  letter-spacing: 3px;
+  position: relative;
+  top: 15px;
+  color: rgb(216, 4, 4);
 }
 
-.social{
-    text-align: right;
+.social {
+  text-align: right;
 }
-.social-icon{
-    height:40px;
-    margin:12px;
-    position: relative;
-    top: 20px;
+.social-icon {
+  height: 40px;
+  margin: 12px;
+  position: relative;
+  top: 20px;
 }
 
-.hero-img{
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
+.hero-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 </style>
 

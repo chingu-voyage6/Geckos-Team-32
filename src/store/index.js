@@ -17,9 +17,9 @@ export default new Vuex.Store({
         return recipeWithId;
       });
     },
-    getRecipieById(state){
+    getRecipieById(state, store){
       return function(id){
-        return state.recipes.find( item=>item.id == id)
+        return store.getRecipes.find( item => item.id == id)
       }
     }
   },

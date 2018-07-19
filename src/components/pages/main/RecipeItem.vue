@@ -26,19 +26,17 @@ export default {
       recipe: this.recipeData
     };
   },
-  computed:{
-    recipeImage(){
-      return this.params.url ? 
-              require(`${this.params.url}`)
-              : require('./default.png')
+  computed: {
+    recipeImage() {
+      const thumbnailPath = this.recipeData.url
+        ? require(`${this.recipeData.url}`)
+        : require("./default.png");
+      return thumbnailPath;
     }
   },
-  methods:{
+  methods: {
     ...mapActions(["removeRecipe"])
   },
-  mounted() {
-    // console.log(this.recipeData);
-  }
 };
 </script>
 
@@ -52,21 +50,21 @@ export default {
   position: relative;
   overflow: hidden;
 }
-.link-wrapper{
+.link-wrapper {
   display: block;
 }
-.title-wrapper{
+.title-wrapper {
   position: absolute;
-  bottom: 0; 
+  bottom: 0;
   width: 100%;
   padding: 5px 5px 5px 10px;
   transform: translateY(100%);
-  transition: 150ms ease-out;; 
+  transition: 150ms ease-out;
 }
-.link-wrapper:hover .title-wrapper{
-   transform: translateY(0);
+.link-wrapper:hover .title-wrapper {
+  transform: translateY(0);
 }
-.default{
+.default {
   width: 100%;
   height: auto;
   object-fit: contain;

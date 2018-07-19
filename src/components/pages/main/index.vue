@@ -22,6 +22,8 @@
     import MainHeader from "+/MainHeader"
     import MainFooter from "+/MainFooter"
     import search from "*/search"
+    import { mapGetters, mapActions } from "vuex";
+    import RecipeItem from "./RecipeItem";
     
     export default {
         components:{
@@ -32,8 +34,7 @@
             
         },
     }
-import { mapGetters, mapActions } from "vuex";
-import RecipeItem from "./RecipeItem";
+
 
 export default {
   name: "MainPage",
@@ -86,7 +87,7 @@ export default {
     margin-left: 300px;
     position: relative;
     top:-150px;
-<style lang="scss" scoped>
+/* <style lang="scss" scoped>
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -94,6 +95,6 @@ export default {
   width: 100%; 
   align-items: center;
   justify-items: center;
-}
+} */
 
 </style>

@@ -1,6 +1,7 @@
 <template>
-    <div class="topNav">
-        <ul class="nav justify-content-end">
+    <div class=" row topNav">
+        <div class="col-sm-12">
+            <ul class="nav justify-content-end">
             <li class="nav-item">
                 <h6 class="nav-link" href="#">Home</h6>
             </li>
@@ -15,6 +16,8 @@
             </li>
         </ul>
     </div>
+        </div>
+        
 </template>
 
 <script>
@@ -30,7 +33,7 @@ export default {};
 
     h6{
         border-right: 1px solid silver;
-        font-family:Georgia, 'Times New Roman', Times, serif
+        font-family: 'Trocchi', serif;
         
         
         

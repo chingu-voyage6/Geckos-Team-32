@@ -46,7 +46,7 @@ export default {
     letter-spacing: 3px;
     position: relative;
     top:15px;
-    color: #ff0000b7
+    color:rgb(216, 4, 4)
 }
 
 .social{

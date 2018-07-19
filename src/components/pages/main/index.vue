@@ -1,5 +1,13 @@
 <template>
     <div>
+        <TopBar/>
+        <MainHeader/>
+        <img src="../images/header-img.jpg" class="headerImg">
+        <search class="search"/>
+        <MainFooter class="footer"/>
+        
+       
+
        <button @click="addNewRecipe">Add recipe</button>
         <div class="grid-container">
             <recipe-item v-for="recipe in getRecipes" :key="recipe.id"
@@ -10,8 +18,23 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import RecipeItem from "./RecipeItem";
+    import TopBar from "+/TopBar"
+    import MainHeader from "+/MainHeader"
+    import MainFooter from "+/MainFooter"
+    import search from "*/search"
+    import { mapGetters, mapActions } from "vuex";
+    import RecipeItem from "./RecipeItem";
+    
+    export default {
+        components:{
+            TopBar,
+            MainHeader,
+            MainFooter,
+            search
+            
+        },
+    }
+
 
 export default {
   name: "MainPage",
@@ -49,7 +72,22 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.headerImg{
+    width: 100%;
+    height: 350px;
+}
+
+.footer{
+    position: relative;
+    top: 800px;
+}
+
+.search{
+    margin-left: 300px;
+    position: relative;
+    top:-150px;
+/* <style lang="scss" scoped>
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -57,5 +95,6 @@ export default {
   width: 100%; 
   align-items: center;
   justify-items: center;
-}
+} */
+
 </style>

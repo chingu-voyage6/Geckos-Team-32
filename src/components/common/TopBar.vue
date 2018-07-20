@@ -3,21 +3,20 @@
         <div class="col-sm-12">
             <ul class="nav justify-content-end">
             <li class="nav-item">
-                <h6 class="nav-link" href="#">Home</h6>
+                <router-link :to="{ name:'MainPage'}" class="nav-link" tag="h6">Home</router-link>
             </li>
             <li class="nav-item">
-                <h6 class="nav-link" href="#">Add Recipe</h6>
+                <router-link :to="{ name:'SubmitPage'}" class="nav-link" tag="h6">Add Recipe</router-link>
             </li>
             <li class="nav-item">
-                <h6 class="nav-link" href="#">Login</h6>
+                <router-link :to="{ name:'LoginPage'}" class="nav-link" tag="h6">Login</router-link>
             </li>
             <li class="nav-item">
-                <h6 class="nav-link" href="#">SignUp</h6>
+                <router-link :to="{ name:'SignUp'}" class="nav-link" tag="h6">Sign Up</router-link>
             </li>
         </ul>
     </div>
-        </div>
-        
+</div>        
 </template>
 
 <script>

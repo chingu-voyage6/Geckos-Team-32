@@ -30,6 +30,7 @@ export default {
 </script>
 
 <style>
+
 #app {
   min-height: 100vh;
   display: grid;

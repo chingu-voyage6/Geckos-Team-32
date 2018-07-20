@@ -1,16 +1,6 @@
 <template>
     <div>
-        <MainHeader></MainHeader>
-        <img src="../images/header-img.jpg" class="headerImg">
-        <div class="col-sm-6 searchBar" >
-            <p class="searchBarText">Find your next recipe...</p>
-                <div class="col-sm-6 searchBar_input">
-                    <input type="text">
-                </div>
-       </div>
-        <MainFooter class="footer"></MainFooter>
        
-
     </div>
 </template>
 

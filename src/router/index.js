@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import MainPage from '*/main/index';
 import SearchPage from '*/search/index';
 import SubmitPage from '*/submit/index';
+import LoginPage from '*/login/index';
 
 
 Vue.use(Router);
@@ -23,6 +24,11 @@ export default new Router({
       path: '/submit',
       name: 'SubmitPage',
       component: SubmitPage,
+    },
+    {
+      path: '/login',
+      name: 'LoginPage',
+      component: LoginPage,
     },
   ],
 });

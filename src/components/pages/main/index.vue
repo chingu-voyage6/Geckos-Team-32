@@ -2,7 +2,10 @@
     <div class="page-wrapper">
       <search class="search"/>      
       <div class="grid-container">
-        <recipe-item v-for="recipe in recipeList" :key="recipe.id" :recipeData="recipe"></recipe-item>
+        <recipe-item v-for="recipe in recipeList" 
+                     :key="recipe.id" 
+                     :recipeData="recipe"
+        ></recipe-item>
       </div>
     </div>
 </template>

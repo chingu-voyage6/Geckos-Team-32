@@ -30,13 +30,17 @@ export default {
 </script>
 
 <style>
+html {
+    width:100vw;
+    overflow-x:hidden;
+}
 
 #app {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
 }
-.topbar{
+.topbar {
   grid-row-start: 1;
   grid-row-end: 1;
   min-height: 0;
@@ -55,5 +59,4 @@ export default {
   grid-row-start: 4;
   grid-row-end: 5;
 }
-
 </style>

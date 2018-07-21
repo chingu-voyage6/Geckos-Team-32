@@ -1,12 +1,14 @@
 <template>
     <div class="page-wrapper">
       <search class="search"/>      
-      <div class="grid-container">
-        <recipe-item v-for="recipe in recipeList" 
-                     :key="recipe.id" 
-                     :recipeData="recipe"
-        ></recipe-item>
-      </div>
+        <transition-group name="list" class="grid-container" tag="div">
+          <recipe-item class="list-item" 
+                       v-for="(recipe, index) in recipeList" 
+                       :key="recipe.id" 
+                       :recipeData="recipe"
+                       :style =" {transitionDelay:`${index*100}ms`}"
+          ></recipe-item> 
+        </transition-group>
     </div>
 </template>
 
@@ -51,4 +53,12 @@ export default {
 .search {
   margin: -150px auto 50px;
 }
+.list-item {
+  transition: 0.5s opacity ease-in-out, transform 1s ease-in;
+}
+.list-enter, .list-leave-to{
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 </style>

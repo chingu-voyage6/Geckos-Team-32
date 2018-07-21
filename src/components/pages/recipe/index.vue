@@ -10,18 +10,16 @@ import { mapGetters } from "vuex";
 export default {
   name: "recipe",
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
-    ...mapGetters(["getRecipieById"]),
-    recipe(){
+    ...mapGetters(["getRecipeById"]),
+    recipe() {
       const recipeId = this.$route.params.id;
-      return this.getRecipieById(recipeId);
+      return this.getRecipeById(recipeId);
     }
   },
-  mounted() {
-  }
+  mounted() {}
 };
 </script>
 

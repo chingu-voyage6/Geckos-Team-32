@@ -1,6 +1,6 @@
 
 const timeStamp = new Date().getTime();
-
+const recipeID = document.getElementById("RecipeID");
 
 var fileSelect = document.getElementById("fileSelect"),
   fileElem = document.getElementById("fileElem");
@@ -45,7 +45,7 @@ function drop(e) {
 function uploadFile(file, fileNumber) {
   document.getElementById("progress").style.width = 0;
   document.getElementById("header").textContent = "";
-  var storageRef = storage.ref(String(timeStamp) + '/' + file.name);
+  var storageRef = storage.ref(String(recipeID.value) + '/' + file.name);
 
   var task = storageRef.put(file);
 
@@ -64,6 +64,28 @@ function uploadFile(file, fileNumber) {
         "Upload completed successfully.";
       document.getElementById("header").style.color = "yellowgreen";
       document.getElementById("progress").style.width = 0;
+
+      if (fileNumber = 1) {
+        var storageRef = storage.ref(String(recipeID.value) + '/' + file.name);
+        storageRef.getDownloadURL().then(function (url) {
+          if (url != '') {
+            db.collection("Recipes").doc(String(recipeID.value)).update({
+              imgUrl: url
+            });
+          }
+        });
+
+
+      }
+
+
+      let docRef = db.collection("imagesUrls").doc();
+      docRef.set(
+        {
+          recipeID: String(recipeID.value),
+          imgUrl: String(recipeID.value) + '/' + file.name
+        }
+      );
     }
   );
 }

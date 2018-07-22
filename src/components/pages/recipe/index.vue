@@ -4,15 +4,20 @@
       <div class="title" >
         <h1>{{recipe.Title}}</h1> 
       </div>
-      <div class="image" ><img src="./images/sven-481475-unsplash.jpg" />
+      <div class="descritption">
+        <div class="image" ><img src="./images/sven-481475-unsplash.jpg" />
       </div>
-      <div class="list">
-        <ul>
-          <li class="elements">Ingredients: <span></span> {{recipe.Ingridients[0].name}},</li>
-          <li class="elements">{{recipe.Ingridients[0].quanity}} dl.</li>
-        </ul>
-
-      <div class="elements">Directions: <span></span> {{recipe.Directions}}</div>
+        <div class="list">
+          <ul>
+            <li class="elements" v-for="item in recipe.Ingridients">
+            Ingredients: <span></span> {{item.name}},
+            </li>       
+            <li class="elements" v-for="item in recipe.Ingridients">
+              {{item.quanity}} dl.</li>
+          </ul>
+            <div class="elements">Directions: <span></span> {{recipe.Directions}}
+            </div>
+        </div>
       </div>
     </div>
 </template>
@@ -44,6 +49,10 @@ export default {
   margin-bottom: 20px;
 }
 
+.descritption{
+  display: flex;
+}
+
 .title {
   font-family:Oleo Script,cursive; 
   color: #d80404;
@@ -53,7 +62,7 @@ export default {
 }
 
 .list{
-  margin: 40px 0;
+  width: 40%;
 }
 
 ul{
@@ -70,6 +79,7 @@ ul{
 
 }
 .image{
+  width: 50%;
   margin: auto;
   text-align: center;
 }

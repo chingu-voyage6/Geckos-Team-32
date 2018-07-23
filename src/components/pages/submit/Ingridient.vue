@@ -11,18 +11,20 @@
             <option value="gram"> gram</option>
             <option value="Kg">Kg</option>
         </select>
-        <input class="user-input-field button" type="button" value="Add" @click="addIngridient(ingridient)">
+        <input class="user-input-field button" type="button" 
+               :value="status" 
+               @click="status == 'Add' ? addIngridient(ingridient) : setIngridient(ingridient)">
     </div>
 </template>
 
 <script>
 const EMPTY_INGRIDIENT = () => {
-  return{
-        name: "",
-        quantity: "",
-        unit: "",
-        price: ""
-      }
+  return {
+    name: "",
+    quantity: "",
+    unit: "",
+    price: ""
+  };
 };
 
 export default {
@@ -31,9 +33,9 @@ export default {
       type: Object,
       value: EMPTY_INGRIDIENT()
     },
-    edit: {
-      type: Boolean,
-      value: false
+    status: {
+      type: String,
+      value: "Add"
     }
   },
   data: () => {
@@ -43,8 +45,10 @@ export default {
   },
   methods: {
     addIngridient(ingridient) {
-      this.$emit("addIngridient", { ingridient });
-      this.clearIngridient();
+      if (this.verified) {
+        this.$emit("addIngridient", { ingridient, type: this.status });
+        this.clearIngridient();
+      }
     },
     clearIngridient() {
       this.ingridient = {
@@ -53,14 +57,27 @@ export default {
         unit: "",
         price: ""
       };
+    },
+    setIngridient(ingridient) {
+      if (this.verified) {
+        this.$emit("setIngridient", { ingridient, type: this.status });
+        this.clearIngridient();
+      }
     }
   },
   watch: {
     editIngridient: {
-      deep: true,
       handler: function(val) {
-        this.ingridient = val;
-      }
+        this.ingridient = JSON.parse(JSON.stringify(val));
+      },
+      deep: true
+    }
+  },
+  computed: {
+    verified() {
+      const ingridient = this.ingridient;
+      const status = Object.keys(ingridient).every( key => ingridient[key] != "" );
+      return status;
     }
   }
 };
@@ -84,6 +101,7 @@ export default {
   color: rgb(216, 4, 4);
   font-weight: bold;
   width: initial;
+  min-width: 4em;
 }
 option[value=""][disabled] {
   display: none;

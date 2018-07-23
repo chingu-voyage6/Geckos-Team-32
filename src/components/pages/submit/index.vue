@@ -11,7 +11,11 @@
                 </div>
                 <div class="container-item ingridients">
                     <label class="user-input-label">Ingredients</label>
-                    <ingridient @addIngridient="addIngridient" :editIngridient="toEdit" :edit="status"></ingridient>
+                    <ingridient :editIngridient="editedIngridient" 
+                                :status="status"
+                                @addIngridient="addIngridient"
+                                @setIngridient="setIngridient"
+                    ></ingridient>
                     <ul class="ingridient-list">
                         <li class="item" v-for="(ingridient, index) in newRecipe.ingridients">
                             <i class="far fa-edit edit" @click="edit(index)"></i>
@@ -48,20 +52,26 @@ export default {
         ingridients: [],
         directions: ""
       },
-      toEdit: {},
-      status: false
+      editedIngridient: {},
+      status: "Add",
+      selected: -1
     };
   },
   methods: {
     addIngridient({ ingridient }) {
       this.newRecipe.ingridients.push(ingridient);
     },
-    remove(index) {
-      this.newRecipe.ingridients.splice(index, 1);
+    setIngridient({ ingridient }) {
+      this.newRecipe.ingridients.splice(this.selected, 1, ingridient);
+      this.status = "Add";
     },
     edit(index) {
-      this.toEdit = this.newRecipe.ingridients[index];
-      this.status = true;
+      this.editedIngridient = this.newRecipe.ingridients[index];
+      this.status = "Save";
+      this.selected = index;
+    },
+    remove(index) {
+      this.newRecipe.ingridients.splice(index, 1);
     }
   }
 };
@@ -99,9 +109,9 @@ export default {
   color: rgb(216, 4, 4);
 }
 .user-input-field {
+  padding: 10px;
   border: 1px solid black;
   border-radius: 8px;
-  padding: 10px;
   background-color: rgb(235, 235, 235);
   font-size: 24px;
   color: grey;
@@ -116,21 +126,20 @@ export default {
 .ingridient-list {
   display: flex;
   flex-direction: row;
-  list-style: none;
   padding: 20px 0;
   margin: 0;
+  list-style: none;
 
   .item {
     position: relative;
-    display: inline-block;
-    align-self: flex-start;
+    min-width: 80px;
+    padding: 5px 25px;
     margin-right: 20px;
+    display: inline-block;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 5px 25px;
     font-size: 20px;
     font-family: Nothing You Could Do, sans-serif;
-    min-width: 80px;
   }
   .edit,
   .remove {

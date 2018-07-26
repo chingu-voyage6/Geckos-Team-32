@@ -11,11 +11,11 @@
                 </div>
                 <div class="container-item ingridients">
                     <label class="user-input-label">Ingredients</label>
-                    <ingridient :editIngridient="editedIngridient" 
-                                :status="status"
-                                @addIngridient="addIngridient"
-                                @setIngridient="setIngridient"
-                    ></ingridient>
+                    <input-ingridient :editIngridient="editedIngridient" 
+                                      :action="action"
+                                      @Add="addIngridient"
+                                      @Save="setIngridient"
+                    ></input-ingridient>
                     <ul class="ingridient-list">
                         <li class="item" v-for="(ingridient, index) in newRecipe.ingridients">
                             <i class="far fa-edit edit" @click="edit(index)"></i>
@@ -39,11 +39,11 @@
 </template>
 
 <script>
-import ingridient from "./Ingridient";
+import inputIngridient from "./inputIngridient";
 
 export default {
   components: {
-    ingridient
+    inputIngridient
   },
   data: () => {
     return {
@@ -53,7 +53,7 @@ export default {
         directions: ""
       },
       editedIngridient: {},
-      status: "Add",
+      action: "Add",
       selected: -1
     };
   },
@@ -63,11 +63,11 @@ export default {
     },
     setIngridient({ ingridient }) {
       this.newRecipe.ingridients.splice(this.selected, 1, ingridient);
-      this.status = "Add";
+      this.action = "Add";
     },
     edit(index) {
       this.editedIngridient = this.newRecipe.ingridients[index];
-      this.status = "Save";
+      this.action = "Save";
       this.selected = index;
     },
     remove(index) {

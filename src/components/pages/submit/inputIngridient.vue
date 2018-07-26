@@ -12,8 +12,8 @@
             <option value="Kg">Kg</option>
         </select>
         <input class="user-input-field button" type="button" 
-               :value="status" 
-               @click="status == 'Add' ? addIngridient(ingridient) : setIngridient(ingridient)">
+               :value="action" 
+               @click="setIngridient(ingridient)">
     </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
       type: Object,
       value: EMPTY_INGRIDIENT()
     },
-    status: {
+    action: {
       type: String,
       value: "Add"
     }
@@ -44,12 +44,6 @@ export default {
     };
   },
   methods: {
-    addIngridient(ingridient) {
-      if (this.verified) {
-        this.$emit("addIngridient", { ingridient, type: this.status });
-        this.clearIngridient();
-      }
-    },
     clearIngridient() {
       this.ingridient = {
         name: "",
@@ -60,7 +54,7 @@ export default {
     },
     setIngridient(ingridient) {
       if (this.verified) {
-        this.$emit("setIngridient", { ingridient, type: this.status });
+        this.$emit(this.action, {ingridient});
         this.clearIngridient();
       }
     }
@@ -76,7 +70,9 @@ export default {
   computed: {
     verified() {
       const ingridient = this.ingridient;
-      const status = Object.keys(ingridient).every( key => ingridient[key] != "" );
+      const status = Object.keys(ingridient).every(
+        key => ingridient[key] != ""
+      );
       return status;
     }
   }

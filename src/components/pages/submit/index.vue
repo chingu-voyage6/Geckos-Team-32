@@ -17,7 +17,7 @@
                                       @Save="setIngridient"
                     ></input-ingridient>
                     <ul class="ingridient-list">
-                        <li class="item" v-for="(ingridient, index) in newRecipe.ingridients">
+                        <li class="item" v-for="(ingridient, index) in newRecipe.ingridients" :key="index">
                             <i class="far fa-edit edit" @click="edit(index)"></i>
                             <span>{{ ingridient.name }} </span>
                             <i class="fas fa-trash-alt remove" @click="remove(index)"></i>
@@ -104,16 +104,17 @@ export default {
   margin-top: 0;
 }
 .user-input-label {
-  font-family: Nothing You Could Do, sans-serif;
-  font-size: 24px;
   color: rgb(216, 4, 4);
+  font-family: Nothing You Could Do, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }
 .user-input-field {
   padding: 10px;
   border: 1px solid black;
   border-radius: 8px;
   background-color: rgb(235, 235, 235);
-  font-size: 24px;
+  font-size: 16px;
   color: grey;
   outline: none;
   text-overflow: ellipsis;

@@ -1,18 +1,13 @@
 <template>
     <div class="ingridient">
-        <input class="user-input-field name" required type="text" placeholder="Ingridient"
-               v-model="ingridient.name">
-         <input class="user-input-field price" required type="number" placeholder="Price" 
-               v-model="ingridient.price">
-        <input class="user-input-field quantity" required type="number" placeholder="Quantity" 
-                v-model="ingridient.quantity">
+        <input class="user-input-field name" required type="text" placeholder="Ingridient" v-model="ingridient.name">
+        <input class="user-input-field price" required type="number" placeholder="Price" v-model="ingridient.price">
+        <input class="user-input-field quantity" required type="number" placeholder="Quantity" v-model="ingridient.quantity">
         <select class="user-input-field unit" required v-model="ingridient.unit" >
             <option value="" disabled selected>Unit</option>
-            <option  v-for="option in optionList" :value="option.value">{{ option.value }}</option>
+            <option  v-for="(option, index) in optionList" :value="option.value" :key="index">{{ option.value }}</option>
         </select>
-        <input class="user-input-field button" type="button" 
-               :value="action" 
-               @click="setIngridient(ingridient)">
+        <input class="user-input-field button" type="button" :value="action" @click="setIngridient(ingridient)">
     </div>
 </template>
 
@@ -40,26 +35,18 @@ export default {
   data: () => {
     return {
       ingridient: EMPTY_INGRIDIENT(),
-      optionList:[
-        { value: "Kg" },
-        { value: "Gramm" }
-      ]
+      optionList: [{ value: "Kg" }, { value: "Gramm" }]
     };
   },
   methods: {
-    clearIngridient() {
-      this.ingridient = {
-        name: "",
-        quantity: "",
-        unit: "",
-        price: ""
-      };
-    },
     setIngridient(ingridient) {
       if (this.verified) {
-        this.$emit(this.action, {ingridient});
+        this.$emit(this.action, { ingridient });
         this.clearIngridient();
       }
+    },
+    clearIngridient() {
+      this.ingridient = EMPTY_INGRIDIENT();
     }
   },
   watch: {
@@ -67,15 +54,14 @@ export default {
       handler: function(val) {
         this.ingridient = JSON.parse(JSON.stringify(val));
       },
-      deep: true
+      deep: true,
+      immediate:true
     }
   },
   computed: {
     verified() {
       const ingridient = this.ingridient;
-      const status = Object.keys(ingridient).every(
-        key => ingridient[key] != ""
-      );
+      const status = Object.keys(ingridient).every( key => ingridient[key] != "" );
       return status;
     }
   }

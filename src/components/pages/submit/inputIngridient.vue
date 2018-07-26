@@ -1,15 +1,14 @@
 <template>
     <div class="ingridient">
-        <input class="user-input-field name" required type="text" placeholder="Ingridient" 
+        <input class="user-input-field name" required type="text" placeholder="Ingridient"
                v-model="ingridient.name">
          <input class="user-input-field price" required type="number" placeholder="Price" 
                v-model="ingridient.price">
         <input class="user-input-field quantity" required type="number" placeholder="Quantity" 
                 v-model="ingridient.quantity">
-         <select class="user-input-field unit" required v-model="ingridient.unit" >
+        <select class="user-input-field unit" required v-model="ingridient.unit" >
             <option value="" disabled selected>Unit</option>
-            <option value="gram"> gram</option>
-            <option value="Kg">Kg</option>
+            <option  v-for="option in optionList" :value="option.value">{{ option.value }}</option>
         </select>
         <input class="user-input-field button" type="button" 
                :value="action" 
@@ -40,7 +39,11 @@ export default {
   },
   data: () => {
     return {
-      ingridient: EMPTY_INGRIDIENT()
+      ingridient: EMPTY_INGRIDIENT(),
+      optionList:[
+        { value: "Kg" },
+        { value: "Gramm" }
+      ]
     };
   },
   methods: {

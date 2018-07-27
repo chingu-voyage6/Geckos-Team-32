@@ -1,27 +1,26 @@
 <template>
     <div class="page-wrapper">
-      <search class="search"/>      
+      <search-box class="search"></search-box>      
         <transition-group name="list" class="grid-container" tag="div">
           <recipe-item class="list-item" 
-                       v-for="(recipe, index) in recipeList" 
-                       :key="recipe.id" 
+                       v-for="(recipe, index) in recipeList" :key="recipe.id" 
                        :recipeData="recipe"
-                       :style =" {transitionDelay:`${index*100}ms`}"
+                       :style ="{ transitionDelay: getDelay(index) }"
           ></recipe-item> 
         </transition-group>
     </div>
 </template>
 
 <script>
-import search from "*/search";
 import { mapGetters } from "vuex";
+import search from "*/search";
 import RecipeItem from "./RecipeItem";
 
 export default {
   name: "MainPage",
   components: {
     RecipeItem,
-    search
+    "search-box":search
   },
   data() {
     return {};
@@ -30,6 +29,12 @@ export default {
     ...mapGetters(["getRecipes"]),
     recipeList() {
       return this.getRecipes;
+    }
+  },
+  methods: {
+    getDelay(index) {
+      const koef = 100;
+      return `${index * koef}ms`;
     }
   }
 };
@@ -42,11 +47,11 @@ export default {
   flex-direction: column;
 }
 .grid-container {
+  align-items: center;
   display: grid;
   grid-template-columns: auto auto auto;
   grid-gap: 20px;
   width: 100%;
-  align-items: center;
   justify-items: center;
 }
 .search {
@@ -55,9 +60,9 @@ export default {
 .list-item {
   transition: 0.5s opacity ease-in-out, transform 1s ease-in;
 }
-.list-enter, .list-leave-to{
+.list-enter,
+.list-leave-to {
   opacity: 0;
   transform: translateY(30px);
 }
-
 </style>

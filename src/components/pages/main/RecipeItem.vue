@@ -1,7 +1,6 @@
 <template>
   <router-link :to="{ name:'recipePage', params:recipeData}" class="link-wrapper">
     <div class="recipe-item ">
-      <!-- <span @click="removeRecipe(recipe.id)">X</span><br> -->
       <img :src="recipeImage" class="default">
       <div class="title-wrapper">
         <span v-text="recipe.Title"></span><br>

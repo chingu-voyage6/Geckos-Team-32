@@ -1,6 +1,6 @@
 <template>
     <div class="ingridient">
-        <input class="user-input-field name" required type="text" placeholder="Ingridient" v-model="ingridient.name">
+        <input class="user-input-field name" required type="text" placeholder="Name" v-model="ingridient.name">
         <input class="user-input-field price" required type="number" placeholder="Price" v-model="ingridient.price">
         <input class="user-input-field quantity" required type="number" placeholder="Quantity" v-model="ingridient.quantity">
         <select class="user-input-field unit" required v-model="ingridient.unit" >
@@ -61,11 +61,16 @@ export default {
   computed: {
     verified() {
       const ingridient = this.ingridient;
-      const status = Object.keys(ingridient).every( key => ingridient[key] != "" );
+      const status = Object.keys(ingridient).every( key => isNotEmpty(ingridient[key]) );
       return status;
     }
   }
 };
+
+function isNotEmpty(obj){
+  return obj != "";
+}
+
 </script>
 
 <style scoped>
@@ -82,11 +87,11 @@ export default {
   flex-grow: 1;
 }
 .button {
-  font-family: Nothing You Could Do, sans-serif;
-  color: rgb(216, 4, 4);
-  font-weight: bold;
   width: initial;
   min-width: 4em;
+  color: rgb(216, 4, 4);
+  font-family: Nothing You Could Do, sans-serif;
+  font-weight: bold;
 }
 option[value=""][disabled] {
   display: none;

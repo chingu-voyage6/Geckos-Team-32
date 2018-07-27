@@ -1,41 +1,41 @@
 <template>
-    <article class="page-wrapper">
-        <section class="submit-form">
-            <div class="heading">
-                <h2>Your recipe</h2>
-            </div>
-            <div class="submit-recipe-container">
-                <div class="container-item recipe">
-                    <label class="user-input-label">Title</label>
-                    <input class="user-input-field" type="text" placeholder="" v-model="newRecipe.title">
-                </div>
-                <div class="container-item ingridients">
-                    <label class="user-input-label">Ingredients</label>
-                    <input-ingridient :editIngridient="editedIngridient" 
-                                      :action="action"
-                                      @Add="addIngridient"
-                                      @Save="setIngridient"
-                    ></input-ingridient>
-                    <ul class="ingridient-list">
-                        <li class="item" v-for="(ingridient, index) in newRecipe.ingridients" :key="index">
-                            <i class="far fa-edit edit" @click="edit(index)"></i>
-                            <span>{{ ingridient.name }} </span>
-                            <i class="fas fa-trash-alt remove" @click="remove(index)"></i>
-                        </li>
-                    </ul>
-                </div>
-                </div>
-                <div class="container-item directions">
-                    <label class="user-input-label">Directions</label>
-                    <textarea class="user-input-field" type="text" v-model="newRecipe.directions"></textarea>
-                </div>
-                <div class="container-item" User>
-                    <label class="user-input-label">Select a nickname</label>
-                    <input class="user-input-field" type="text">
-                </div>
-            </div>
-        </section>
-    </article>
+  <article class="page-wrapper">
+    <section class="submit-form">
+      <div class="heading">
+        <h2>Your recipe</h2>
+      </div>
+      <div class="submit-recipe-container">
+        <div class="container-item recipe">
+          <label class="user-input-label">Title</label>
+          <input class="user-input-field" type="text" placeholder="" v-model="newRecipe.title">
+        </div>
+        <div class="container-item ingridients">
+          <label class="user-input-label">Ingredients</label>
+          <input-ingridient :editIngridient="editedIngridient" 
+                            :action="action" 
+                            @Add="addIngridient" 
+                            @Save="setIngridient"
+          ></input-ingridient>
+          <ul class="ingridient-list">
+            <li class="item" v-for="(ingridient, index) in newRecipe.ingridients" :key="index">
+              <i class="far fa-edit edit" @click="edit(index)"></i>
+              <span>{{ ingridient.name }}</span>
+              <i class="fas fa-trash-alt remove" @click="remove(index)"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="container-item directions">
+        <label class="user-input-label">Directions</label>
+        <textarea class="user-input-field" type="text" v-model="newRecipe.directions"></textarea>
+      </div>
+      <div class="container-item" User>
+        <label class="user-input-label">Select a nickname</label>
+        <input class="user-input-field" type="text">
+      </div>
+      </div>
+    </section>
+  </article>
 </template>
 
 <script>

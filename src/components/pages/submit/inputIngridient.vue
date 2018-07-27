@@ -34,7 +34,7 @@ export default {
   },
   data: () => {
     return {
-      ingridient: EMPTY_INGRIDIENT(),
+      ingridient: {},
       optionList: [{ value: "Kg" }, { value: "Gramm" }]
     };
   },

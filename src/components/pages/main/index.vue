@@ -20,7 +20,7 @@ export default {
   name: "MainPage",
   components: {
     RecipeItem,
-    "search-box":search
+    "search-box": search
   },
   data() {
     return {};

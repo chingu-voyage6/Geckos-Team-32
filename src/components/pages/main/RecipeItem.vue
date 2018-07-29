@@ -43,7 +43,7 @@ export default {
 .recipe-item {
   display: flex;
   width: 200px;
-  min-height: 200px;
+  height: 200px;
   border: 3px solid orange;
   border-radius: 5px;
   position: relative;

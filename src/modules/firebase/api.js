@@ -3,7 +3,8 @@ import firebase from "firebase";
 function createUploader(firebase) {
   const storageRef = firebase.storage().ref();
   return function(imageName, prefix = "images") {
-    const fullPath = `${prefix}/${imageName}`;
+    const salt = Math.ceil(Date.now() * Math.random()).toString();
+    const fullPath = `${prefix}/${salt + imageName}`;
     const imageRef = storageRef.child(fullPath);
     return function(file, stateChangeHandler = function() {}) {
       const uploadImagetask = imageRef.put(file);

@@ -1,5 +1,8 @@
 <template>
   <article class="page-wrapper">
+    <div class="loader-wrapper" v-if="showLoader">
+      <div class="loader"></div>
+    </div>
     <section class="submit-form">
       <div class="heading">
         <h2>Your recipe</h2>
@@ -66,7 +69,8 @@ export default {
       editedIngridient: {},
       action: "Add",
       selected: -1,
-      file: {}
+      file: {},
+      showLoader: false
     };
   },
   methods: {
@@ -93,39 +97,73 @@ export default {
     },
     sumbit() {
       const newRecipe = this.newRecipe;
-      const imageUploadTask = imageUploader("test.png");
-      if (this.isValid) {
+      const imageUploadTask = imageUploader(this.file.name);
+      debugger;
+      if (this.isValid()) {
+        this.showLoader = true;
         imageUploadTask(this.file)
           .then(url => (newRecipe.ImageUrl = url))
-          .then(() => this.addRecipe(newRecipe) && console.log("done"));
+          .then(() => this.addRecipe(newRecipe))
+          .then(() => (this.showLoader = false));
       }
-    }
-  },
-  computed: {
+    },
     isValid() {
       const recipe = this.newRecipe;
-      const filestatus = isNotEmptyObject(this.file);
+      const filestatus = !!this.file.name;
       const recipeStatus = Object.keys(recipe).every(key => {
         const property = recipe[key];
-        return typeof property === Object
+        return typeof property == Object
           ? isNotEmptyObject(property)
           : isNotEmptyString(property);
       });
       return recipeStatus && filestatus;
     }
-  }
+  },
+  computed: {}
 };
 
 function isNotEmptyObject(object) {
-  return !Object.keys(object).length;
+  return !!Object.keys(object).length;
 }
 
 function isNotEmptyString(string) {
-  return string != "";
+  return !!string.length;
 }
 </script>
 
 <style lang="scss" >
+.loader-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background: gray;
+  opacity: 0.5;
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 200px;
+  height: 200px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.page-wrapper {
+  position: relative;
+}
 .submit-form {
   max-width: 1366px;
   margin: 0 auto;
@@ -163,7 +201,7 @@ function isNotEmptyString(string) {
   background-color: rgb(235, 235, 235);
   font-size: 16px;
   color: grey;
-  outline: none;
+  outline: 0 !important;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

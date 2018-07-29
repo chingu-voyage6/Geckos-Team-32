@@ -27,15 +27,15 @@ export default {
   },
   computed: {
     recipeImage() {
-      const thumbnailPath = this.recipeData.url
-        ? require(`${this.recipeData.url}`)
+      const thumbnailPath = this.recipeData.ImageUrl
+        ? `${this.recipeData.ImageUrl}`
         : require("./default.png");
       return thumbnailPath;
     }
   },
   methods: {
     ...mapActions(["removeRecipe"])
-  },
+  }
 };
 </script>
 

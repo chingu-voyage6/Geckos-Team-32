@@ -1,7 +1,6 @@
 <template>
   <router-link :to="{ name:'recipePage', params:recipeData}" class="link-wrapper">
     <div class="recipe-item ">
-      <!-- <span @click="removeRecipe(recipe.id)">X</span><br> -->
       <img :src="recipeImage" class="default">
       <div class="title-wrapper">
         <span v-text="recipe.Title"></span><br>
@@ -28,15 +27,15 @@ export default {
   },
   computed: {
     recipeImage() {
-      const thumbnailPath = this.recipeData.url
-        ? require(`${this.recipeData.url}`)
+      const thumbnailPath = this.recipeData.ImageUrl
+        ? `${this.recipeData.ImageUrl}`
         : require("./default.png");
       return thumbnailPath;
     }
   },
   methods: {
     ...mapActions(["removeRecipe"])
-  },
+  }
 };
 </script>
 
@@ -44,7 +43,7 @@ export default {
 .recipe-item {
   display: flex;
   width: 200px;
-  min-height: 200px;
+  height: 200px;
   border: 3px solid orange;
   border-radius: 5px;
   position: relative;

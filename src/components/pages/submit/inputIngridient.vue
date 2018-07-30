@@ -72,8 +72,8 @@ export default {
   }
 };
 
-function isNotEmpty(obj) {
-  return obj != "";
+function isNotEmpty(string) {
+  return string != "";
 }
 </script>
 

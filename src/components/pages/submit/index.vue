@@ -98,25 +98,35 @@ export default {
     sumbit() {
       const newRecipe = this.newRecipe;
       const imageUploadTask = imageUploader(this.file.name);
-      debugger;
-      if (this.isValid()) {
+      const { isValid, invalidProps } = this.validate();
+
+      if (isValid) {
         this.showLoader = true;
         imageUploadTask(this.file)
           .then(url => (newRecipe.ImageUrl = url))
           .then(() => this.addRecipe(newRecipe))
           .then(() => (this.showLoader = false));
+      }else{
+        console.log(invalidProps)
       }
     },
-    isValid() {
+    validate() {
+      let overalStatus, invalidProps = [];
       const recipe = this.newRecipe;
-      const filestatus = !!this.file.name;
-      const recipeStatus = Object.keys(recipe).every(key => {
+      const fileStatus = !!this.file.name;
+
+      const recipeFieldsStatus = Object.keys(recipe).every(key => {
         const property = recipe[key];
-        return typeof property == Object
-          ? isNotEmptyObject(property)
-          : isNotEmptyString(property);
+        const status = typeof property == Object
+            ? isNotEmptyObject(property)
+            : isNotEmptyString(property);
+        status || invalidProps.push(key);
+        return status;
       });
-      return recipeStatus && filestatus;
+
+      fileStatus || invalidProps.push("file");
+      overalStatus = recipeFieldsStatus && fileStatus;
+      return { isValid: overalStatus, invalidProps };
     }
   },
   computed: {}

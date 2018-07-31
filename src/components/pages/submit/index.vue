@@ -158,7 +158,6 @@ function isNotEmptyString(string) {
   border-top: 16px solid #3498db;
   width: 200px;
   height: 200px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
   margin: auto;
 }

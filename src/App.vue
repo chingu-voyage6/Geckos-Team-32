@@ -11,6 +11,9 @@
 import MainHeader from "+/MainHeader";
 import MainFooter from "+/MainFooter";
 import TopBar from "+/TopBar";
+import PopupNotify from "+/PopupNotify";
+
+
 import { mapActions } from "vuex";
 
 export default {
@@ -18,7 +21,8 @@ export default {
   components: {
     MainHeader,
     MainFooter,
-    TopBar
+    TopBar,
+    PopupNotify
   },
   methods: {
     ...mapActions(["fireDbChangesListener"])

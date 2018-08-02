@@ -1,14 +1,14 @@
 <template>
-    <div class="page-wrapper">
-      <search-box class="search"></search-box>      
-        <transition-group name="list" class="grid-container" tag="div">
-          <recipe-item class="list-item" 
-                       v-for="(recipe, index) in recipeList" :key="recipe.id" 
-                       :recipeData="recipe"
-                       :style ="{ transitionDelay: getDelay(index) }"
-          ></recipe-item> 
-        </transition-group>
-    </div>
+  <div class="page-wrapper">
+    <search-box class="search"></search-box>      
+    <transition-group name="list" class="grid-container" tag="div">
+      <recipe-item class="list-item" 
+                   v-for="(recipe, index) in recipeList" :key="recipe.id" 
+                   :recipeData="recipe"
+                   :style ="{ transitionDelay: getDelay(index) }"
+      ></recipe-item> 
+    </transition-group>
+  </div>
 </template>
 
 <script>

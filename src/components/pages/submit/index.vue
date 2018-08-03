@@ -12,7 +12,7 @@
           <label class="user-input-label">Title</label>
           <input class="user-input-field" type="text" placeholder="" v-model="newRecipe.Title">
         </div>
-        <div class="container-item ingridients">
+        <div class="container-item Ingredients">
           <label class="user-input-label">Ingredients</label>
           <input-ingridient :editIngridient="editedIngridient" 
                             :action="action" 
@@ -20,7 +20,7 @@
                             @Save="setIngridient"
           ></input-ingridient>
           <ul class="ingridient-list">
-            <li class="item" v-for="(ingridient, index) in newRecipe.Ingridients" :key="index">
+            <li class="item" v-for="(ingridient, index) in newRecipe.Ingredients" :key="index">
               <i class="far fa-edit edit" @click="edit(index)"></i>
               <span>{{ ingridient.name }}</span>
               <i class="fas fa-trash-alt remove" @click="remove(index)"></i>
@@ -53,6 +53,7 @@
 import { mapActions } from "vuex";
 import { imageUploader } from "@/modules/firebase";
 import inputIngridient from "./inputIngridient";
+import { errors } from "./errors";
 
 export default {
   components: {
@@ -62,7 +63,7 @@ export default {
     return {
       newRecipe: {
         Title: "",
-        Ingridients: [],
+        Ingredients: [],
         Directions: "",
         User: ""
       },
@@ -74,21 +75,21 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["addRecipe"]),
+    ...mapActions(["addRecipe", "showPopup"]),
     addIngridient({ ingridient }) {
-      this.newRecipe.Ingridients.push(ingridient);
+      this.newRecipe.Ingredients.push(ingridient);
     },
     setIngridient({ ingridient }) {
-      this.newRecipe.Ingridients.splice(this.selected, 1, ingridient);
+      this.newRecipe.Ingredients.splice(this.selected, 1, ingridient);
       this.action = "Add";
     },
     edit(index) {
-      this.editedIngridient = this.newRecipe.Ingridients[index];
+      this.editedIngridient = this.newRecipe.Ingredients[index];
       this.action = "Save";
       this.selected = index;
     },
     remove(index) {
-      this.newRecipe.Ingridients.splice(index, 1);
+      this.newRecipe.Ingredients.splice(index, 1);
     },
     onFileChange(event) {
       const files = event.target.files || event.dataTransfer.files;
@@ -99,25 +100,33 @@ export default {
       const newRecipe = this.newRecipe;
       const imageUploadTask = imageUploader(this.file.name);
       const { isValid, invalidProps } = this.validate();
-
       if (isValid) {
         this.showLoader = true;
         imageUploadTask(this.file)
           .then(url => (newRecipe.ImageUrl = url))
           .then(() => this.addRecipe(newRecipe))
-          .then(() => (this.showLoader = false));
-      }else{
-        console.log(invalidProps)
+          .then(() => this.showLoader = false)
+          .then(() => this.clear());
+      } else {
+        const message = invalidProps.reduce((result, prop) => {
+          const errorPhrase = errors[prop.toUpperCase()];
+          const separator = (invalidProps.length = 1 ? "" : "and");
+          return `${result}${separator} ${errorPhrase}`;
+        }, "Please");
+
+        this.showPopup({ body: message });
       }
     },
     validate() {
-      let overalStatus, invalidProps = [];
+      let overalStatus,
+        invalidProps = [];
       const recipe = this.newRecipe;
       const fileStatus = !!this.file.name;
 
       const recipeFieldsStatus = Object.keys(recipe).every(key => {
         const property = recipe[key];
-        const status = typeof property == Object
+        const status =
+          typeof property == Object
             ? isNotEmptyObject(property)
             : isNotEmptyString(property);
         status || invalidProps.push(key);
@@ -127,6 +136,12 @@ export default {
       fileStatus || invalidProps.push("file");
       overalStatus = recipeFieldsStatus && fileStatus;
       return { isValid: overalStatus, invalidProps };
+    },
+    clear() {
+      this.newRecipe.Title = "";
+      this.newRecipe.Ingredients = [];
+      this.newRecipe.Directions = "";
+      this.newRecipe.User = "";
     }
   },
   computed: {}
@@ -171,7 +186,7 @@ function isNotEmptyString(string) {
   max-width: 1366px;
   margin: 0 auto;
   display: flex;
-  padding: 0 20px;
+  padding: 0 40px;
   flex-direction: column;
 }
 
@@ -282,7 +297,6 @@ function isNotEmptyString(string) {
   display: none;
 }
 
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -291,5 +305,4 @@ function isNotEmptyString(string) {
     transform: rotate(360deg);
   }
 }
-
 </style>

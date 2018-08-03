@@ -8,8 +8,8 @@
       </div>
       <div class="list">
         <ul>
-          <li class="elements">Ingredients: <span></span> {{recipe.Ingridients[0].name}},</li>
-          <li class="elements">{{recipe.Ingridients[0].quanity}} dl.</li>
+          <li class="elements">Ingredients: <span></span> {{recipe.Ingredients[0].name}},</li>
+          <li class="elements">{{recipe.Ingredients[0].quanity}} dl.</li>
         </ul>
 
       <div class="elements">Directions: <span></span> {{recipe.Directions}}</div>

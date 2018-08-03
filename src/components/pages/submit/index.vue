@@ -152,6 +152,7 @@ function isNotEmptyString(string) {
   background: gray;
   opacity: 0.5;
 }
+
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
@@ -162,17 +163,10 @@ function isNotEmptyString(string) {
   margin: auto;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .page-wrapper {
   position: relative;
 }
+
 .submit-form {
   max-width: 1366px;
   margin: 0 auto;
@@ -287,4 +281,15 @@ function isNotEmptyString(string) {
 .non-visible {
   display: none;
 }
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 </style>

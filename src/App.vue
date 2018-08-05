@@ -3,7 +3,10 @@
     <TopBar class="topbar"></TopBar>
     <MainHeader class="header"></MainHeader>
     <div class="content" >
-      <PopupNotify class="global-notify"></PopupNotify>
+      <PopupNotify class="global-notify" :show="show">
+        <div slot="heading">{{ $store.state.popup.header || "Chez Gourmet"}}</div>
+        <div slot="content">{{ $store.state.popup.body}}</div>
+      </PopupNotify>
       <router-view />
     </div>
     <MainFooter class="footer"></MainFooter>
@@ -16,7 +19,7 @@ import MainFooter from "+/MainFooter";
 import TopBar from "+/TopBar";
 import PopupNotify from "+/PopupNotify";
 
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "App",
@@ -29,8 +32,13 @@ export default {
   methods: {
     ...mapActions(["fireDbChangesListener"])
   },
+    computed:{
+      ...mapGetters(["show"])
+  },
+
   created() {
     this.fireDbChangesListener();
+    console.log(this.showPopup)
   }
 };
 </script>

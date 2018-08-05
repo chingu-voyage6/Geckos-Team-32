@@ -27,7 +27,6 @@ export default {};
 
 <style>
 .header-line {
-  /* background-color: silver; */
   height: 100px;
 }
 
@@ -39,7 +38,6 @@ export default {};
 
 .titleText {
   text-align: center;
-  /* font-family: 'Prosto One', cursive; */
   font-family: "Oleo Script", cursive;
   font-size: 3.3em;
   letter-spacing: 3px;

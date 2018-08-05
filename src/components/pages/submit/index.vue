@@ -106,9 +106,7 @@ export default {
           .then(doc => (id = doc.id))
           .then(id => imageUploader(this.file.name, id))
           .then(upload => upload(this.file))
-          .then(url =>
-            this.updateRecipeField({ id, payload: { ImageUrl: url } })
-          )
+          .then(url =>this.updateRecipeField({ id, payload: { ImageUrl: url } }))
           .then(() => this.clear())
           .then(() => this.stopLoader());
       } else {
@@ -222,7 +220,7 @@ function isNotEmptyString(string) {
 }
 
 .user-input-field {
-  padding: 10px;
+  padding: 7px;
   border: 1px solid black;
   border-radius: 8px;
   background-color: rgb(235, 235, 235);

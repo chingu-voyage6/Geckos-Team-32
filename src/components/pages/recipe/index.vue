@@ -1,27 +1,30 @@
 <template>
-  <div class="recipe" v-if="recipe">
-    <div class="title" >
-      <h2>{{recipe.Title}}</h2> 
-    </div>
-    <div class="descritption">
-      <div class="image" >
-        <img :src="recipe.ImageUrl" />
-    </div>
-      <div class="list">
-        <ul>
-          <li class="elements" v-for="item in recipe.Ingredients">
-            <span>{{item.name}} </span> 
-            <span>{{item.quantity.number}} </span> 
-            <span>{{item.quantity.unit}} </span>
-          </li>
-        </ul>
-          <div class="elements">
-            <span>Directions:</span>
-            <span>{{recipe.Directions}}</span>
-          </div>
+  <transition name="fade">
+    <div class="recipe" v-if="recipe">
+      <div class="title" >
+        <h2>{{recipe.Title}} by <span>{{recipe.User}}</span></h2> 
+      </div>
+      <div class="descritption">
+        <div class="image" >
+          <img :src="recipe.ImageUrl" />
+      </div>
+        <div class="list">
+          <p class="list-header">Ingredients</p>
+          <ul class="elements">
+            <li v-for="item in recipe.Ingredients">
+              <span>{{item.name}} </span> 
+              <span>{{item.quantity.number}} </span> 
+              <span>{{item.quantity.unit}} </span>
+            </li>
+          </ul>
+          <p class="list-header">Directions</p>
+            <div class="elements">
+              <span>{{recipe.Directions}}</span>
+            </div>
+        </div>
       </div>
     </div>
-  </div>
+  </transition> 
 </template>
 <script>
 import { mapGetters } from "vuex";
@@ -42,7 +45,16 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
+.fade-enter-active {
+  transition: opacity .5s;
+  opacity: 1;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 .recipe {
   width: 80%;
   margin: auto;
@@ -54,6 +66,8 @@ export default {
 }
 
 .title {
+  margin-top: 15px;
+  margin-bottom: 25px;;
   font-family: Oleo Script, cursive;
   color: #d80404;
   text-align: center;
@@ -63,6 +77,7 @@ export default {
 
 .list {
   width: 40%;
+  flex-grow: 0.5;
 }
 
 ul {
@@ -76,6 +91,10 @@ ul {
   color: #d80404;
   padding-right: 10px;
 }
+.list-header {
+  @extend .elements;
+  font-size: 1.5em;
+}
 .image {
   width: 50%;
   margin: auto;
@@ -83,7 +102,7 @@ ul {
 }
 
 img {
-  height: 20em;
-  width: 20em;
+  object-fit: contain;
+  max-height: 300px;
 }
 </style>

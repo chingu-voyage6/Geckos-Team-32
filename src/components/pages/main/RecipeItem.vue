@@ -1,9 +1,14 @@
 <template>
-  <router-link :to="{ name:'recipePage', params:recipeData}" class="link-wrapper">
-    <div class="recipe-item ">
-      <img :src="recipeImage" class="default">
-      <div class="title-wrapper">
-        <span v-text="recipe.Title"></span><br>
+  <router-link :to="{ name:'recipePage', params:recipeData}" class="link-wrapper" tag="div">
+    <div class="recipe-item">
+      <header class="title-wrapper">
+        <span class="title" v-text="recipe.Title"></span>
+      </header>
+      <div class="image-container">
+      <img :src="recipeImage">
+      </div>
+      <div class="title-wrapper user-name">
+        <span class="title">By {{recipe.User}}</span>
       </div>
     </div>
   </router-link> 
@@ -42,30 +47,39 @@ export default {
 <style lang="scss" scoped>
 .recipe-item {
   display: flex;
-  width: 200px;
-  height: 200px;
-  border: 3px solid orange;
+  flex-direction: column;
+  width: 320px;
+  padding: 10px;
+  border: 2px solid black;
   border-radius: 5px;
   position: relative;
+  background: #e6e6e6;
   overflow: hidden;
+  cursor: pointer;
 }
 .link-wrapper {
   display: block;
 }
 .title-wrapper {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  padding: 5px 5px 5px 10px;
-  transform: translateY(100%);
   transition: 150ms ease-out;
+  .title {
+    font-family: Nothing You Could Do;
+    color: #d80404;
+    font-size: 1.5em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
-.link-wrapper:hover .title-wrapper {
-  transform: translateY(0);
+.user-name {
+  text-align: right;
 }
-.default {
+.image-container {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+  }
 }
 </style>

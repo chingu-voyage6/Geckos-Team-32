@@ -28,16 +28,13 @@
     padding-left: 100px;
     background-color: white;
     border-radius:10px;
-   
 }
 
 input{
     width: 85%;
     height: 60px;
     border-radius:3px;
-    background-color: silver;
-    
-    
+    background-color: silver;   
 }
 
 .searchIcon{
@@ -49,7 +46,6 @@ input{
     color: rgb(216, 4, 4);
     margin-left: 50px;
     font-family: 'Lobster', cursive;
-    
     margin-top: -10px;
 }
 

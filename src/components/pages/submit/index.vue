@@ -117,8 +117,7 @@ export default {
       }
     },
     validate() {
-      let overalStatus,
-        invalidFields = [];
+      let overalStatus, invalidFields = [];
       const recipe = this.newRecipe;
       const fileStatus = !!this.file.name;
       const recipeFieldsStatus = Object.keys(recipe).every(key => {

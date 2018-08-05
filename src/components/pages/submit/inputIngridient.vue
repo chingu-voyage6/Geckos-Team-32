@@ -37,12 +37,12 @@ export default {
   data: () => {
     return {
       ingridient: EMPTY_INGRIDIENT(),
-      optionList: [{ value: "Kg" }, { value: "Gramm" }]
+      optionList: [{ value: "unit" }, { value: "gramm" },{ value: "liter"}]
     };
   },
   methods: {
     setIngridient(ingridient) {
-      if (this.verified) {
+      if (this.isVerified) {
         this.$emit(this.action, { ingridient });
         this.clearIngridient();
       }
@@ -60,7 +60,7 @@ export default {
     }
   },
   computed: {
-    verified() {
+    isVerified() {
       const ingridient = this.ingridient;
       const quantity = this.ingridient.quantity;
 
@@ -72,8 +72,8 @@ export default {
   }
 };
 
-function isNotEmpty(obj) {
-  return obj != "";
+function isNotEmpty(string) {
+  return string != "";
 }
 </script>
 

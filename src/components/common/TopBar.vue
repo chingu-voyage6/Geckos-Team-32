@@ -8,12 +8,12 @@
             <li class="nav-item">
                 <router-link :to="{ name:'SubmitPage'}" class="nav-link" tag="h6">Add Recipe</router-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <router-link :to="{ name:'LoginPage'}" class="nav-link" tag="h6">Login</router-link>
             </li>
             <li class="nav-item">
                 <router-link :to="{ name:'SignUp'}" class="nav-link" tag="h6">Sign Up</router-link>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>        

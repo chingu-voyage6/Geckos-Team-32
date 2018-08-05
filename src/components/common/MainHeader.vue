@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row header-line">
             <div class="col-sm-3">
-                <img src="./imgs/chef.png" class="logo">
+                <router-link :to="{ name:'MainPage'}" class="nav-link" tag="div"><img src="./imgs/chef.png" class="logo"></router-link>
             </div>
             <div class="col-sm-6  title">
                 <h1 class="titleText">Chez Gourmet</h1>
@@ -34,6 +34,7 @@ export default {};
   height: 80px;
   position: relative;
   top: 8px;
+  cursor: pointer;
 }
 
 .titleText {

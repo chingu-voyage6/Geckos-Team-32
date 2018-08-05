@@ -13,7 +13,8 @@
             <div class="search-text after">
               <div class="heading">
                 <span>... post your best one ...</span>
-                <span class="icon play"></span>
+                <router-link :to="{ name:'SubmitPage'}" class="nav-link" tag="a"><span class="icon play"></span></router-link>
+                
               </div>
             </div>
         </div>    

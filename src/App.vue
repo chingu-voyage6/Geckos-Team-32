@@ -35,10 +35,8 @@ export default {
     computed:{
       ...mapGetters(["show"])
   },
-
   created() {
     this.fireDbChangesListener();
-    console.log(this.showPopup)
   }
 };
 </script>

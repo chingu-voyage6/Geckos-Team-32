@@ -153,8 +153,7 @@ export default {
         return `${result}${separator} ${errorPhrase}`;
       }, "Please");
     }
-  },
-  computed: {}
+  }
 };
 
 function isNotEmptyObject(object) {

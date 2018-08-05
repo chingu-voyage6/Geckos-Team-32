@@ -149,7 +149,7 @@ export default {
     },
     getErrorMessage(fields) {
       return fields.reduce((result, prop) => {
-        const errorPhrase = ERRORS[prop.toUpperCase()];
+        const errorPhrase = ERRORS[prop.toUpperCase()]; 
         const separator = (fields.length = 1 ? "" : "and");
         return `${result}${separator} ${errorPhrase}`;
       }, "Please");

@@ -1,4 +1,5 @@
 <template>
+  <transition name="fade">
     <div class="popup-notify" v-if="show">
            <div class="popup-window">
                <h3 class="popup-heading">
@@ -12,11 +13,11 @@
                 </div>
            </div>
     </div>
+  </transition>
 </template>
 
 <script>
-import { mapActions, mapGetters} from "vuex";
-
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "popup-notify",
@@ -29,8 +30,8 @@ export default {
   data: () => {
     return {};
   },
-  methods:{
-      ...mapActions(["hidePopup"])
+  methods: {
+    ...mapActions(["hidePopup"])
   }
 };
 </script>
@@ -53,6 +54,7 @@ export default {
   border-radius: 4px;
   flex-basis: 600px;
   flex-grow: 0.3;
+  transition: transform 150ms ease-in-out;
 
   .popup-heading {
     min-height: 2em;
@@ -70,12 +72,24 @@ export default {
     font-size: 2em;
     line-height: 0;
   }
-
   .content {
     padding: 10px;
     font-family: Nothing You Could Do, sans-serif;
     font-weight: bold;
     font-size: 2em;
   }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.fade-enter-active .popup-window,
+.fade-leave-active .popup-window {
+  transform: scaleY(0);
 }
 </style>

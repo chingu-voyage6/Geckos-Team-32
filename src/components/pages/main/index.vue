@@ -1,9 +1,11 @@
 <template>
   <div class="page-wrapper">
-    <search-box class="search"></search-box>      
+    <search-box class="search"
+                @search="search"
+    ></search-box>      
     <transition-group name="list" class="grid-container" tag="div">
       <recipe-item class="list-item" 
-                   v-for="(recipe, index) in recipeList" :key="recipe.id" 
+                   v-for="(recipe, index) in recipes" :key="recipe.id" 
                    :recipeData="recipe"
                    :style ="{ transitionDelay: getDelay(index) }"
       ></recipe-item> 
@@ -13,7 +15,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import search from "*/search";
+import search from "./SearchBox";
 import RecipeItem from "./RecipeItem";
 
 export default {
@@ -23,18 +25,27 @@ export default {
     "search-box": search
   },
   data() {
-    return {};
+    return {
+      query: ""
+    };
   },
   computed: {
     ...mapGetters(["getRecipes"]),
     recipeList() {
       return this.getRecipes;
+    },
+    recipes() {
+      const list = this.recipeList.filter(recipe => ~recipe.Title.search(this.query));
+      return list.length > 0 ? list : this.recipeList;
     }
   },
   methods: {
     getDelay(index) {
       const koef = 100;
       return `${index * koef}ms`;
+    },
+    search(search) {
+      this.query = search.query;
     }
   }
 };

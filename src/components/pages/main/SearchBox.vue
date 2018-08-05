@@ -1,14 +1,22 @@
 <template>
-    <div class=" row container">
+    <div class="row container">
         <div class="col-sm-12">
-            <p class="searchTxt">Find your next recipe...</p>
+            <div class="search-text before">
+              <div class="heading">
+                <span class="icon searching"></span>
+                <span>Find your next recipe...</span>
+              </div>
+            </div>
             <div>
-                <input type="text" placeholder="search recipes..." v-model="query" @input="$emit('search',{query})">
-                <i class="fas fa-search searchIcon"></i>
+              <input type="text" placeholder="Type a term and hit enter" v-model="query" @input="$emit('search',{query})">
             </div> 
-        </div>
-          
-        
+            <div class="search-text after">
+              <div class="heading">
+                <span>... post your best one ...</span>
+                <span class="icon play"></span>
+              </div>
+            </div>
+        </div>    
     </div>
 </template>
 
@@ -23,33 +31,72 @@ export default {
 };
 </script>
 
-<style scoped>
+<style  lang="scss" scoped>
 .container {
   border: 1px solid silver;
-  width: 55%;
-  height: 220px;
-  padding-top: 50px;
-  padding-left: 100px;
+  max-width: 700px;
+  padding: 15px 20px;
   background-color: white;
-  border-radius: 10px;
 }
 
 input {
-  width: 85%;
+  width: 100%;
   height: 60px;
   border-radius: 3px;
-  background-color: silver;
+  background-color: #e6e6e6;
+  box-shadow: none;
+  outline: 0;
+  border: 1px solid silver;
+  appearance: none;
+  padding: 5px 15px;
 }
 
 .searchIcon {
   font-size: 25px;
 }
 
-.searchTxt {
+.search-text {
+  display: flex;
+}
+
+.heading {
+  display: flex;
   font-size: 28px;
   color: rgb(216, 4, 4);
-  margin-left: 50px;
-  font-family: "Lobster", cursive;
-  margin-top: -10px;
+  font-family: Nothing You Could Do;
+  font-weight: bold;
+}
+
+.before {
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.after {
+  margin-top: 12px;
+  margin-bottom: 0;
+  text-align: right;
+  align-content: flex-end;
+  /* align-items: flex-end; */
+  .heading {
+    margin-left: auto;
+  }
+}
+.icon {
+  display: block;
+  background-color: gray;
+  width: 1.5em;
+  height: 1.5em;
+  background-size: contain;
+}
+.play {
+  margin-left: 20px;
+  background-image: url("./play.png");
+}
+
+.searching {
+  margin-right: 20px;
+
+  background-image: url("./search-icon.png");
 }
 </style>

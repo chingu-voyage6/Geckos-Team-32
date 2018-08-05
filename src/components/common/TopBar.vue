@@ -33,5 +33,6 @@ export default {};
 h6 {
   border-right: 1px solid silver;
   font-family: "Trocchi", serif;
+  cursor: pointer;
 }
 </style>

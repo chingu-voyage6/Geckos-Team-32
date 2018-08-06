@@ -4,7 +4,7 @@
         <input class="user-input-field price" required type="number" placeholder="Price" v-model="ingridient.price">
         <input class="user-input-field quantity" required type="number" placeholder="Quantity" v-model="ingridient.quantity.number">
         <select class="user-input-field unit" required v-model="ingridient.quantity.unit" >
-            <option value="" disabled selected>Unit</option>
+            <option value="" disabled selected>Unit type</option>
             <option  v-for="(option, index) in optionList" :value="option.value" :key="index">{{ option.value }}</option>
         </select>
         <input class="user-input-field button" type="button" :value="action" @click="setIngridient(ingridient)">

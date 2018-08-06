@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
+import { INGREDIENT_SUBMIT_ERORS, getErrorMessage } from "./errors";
 const EMPTY_INGRIDIENT = () => {
   return {
     name: "",
@@ -37,15 +39,34 @@ export default {
   data: () => {
     return {
       ingridient: EMPTY_INGRIDIENT(),
-      optionList: [{ value: "unit" }, { value: "gramm" },{ value: "liter"}]
+      optionList: [{ value: "unit" }, { value: "gramm" }, { value: "liter" }]
     };
   },
   methods: {
+    ...mapActions(["showPopup"]),
     setIngridient(ingridient) {
-      if (this.isVerified) {
+      const { isVerified, invalidFileds } = this.verify();
+
+      if (isVerified) {
         this.$emit(this.action, { ingridient });
         this.clearIngridient();
+      } else {
+        const errorMessage = getErrorMessage(
+          invalidFileds,
+          INGREDIENT_SUBMIT_ERORS
+        );
+        this.showPopup({ body: errorMessage });
       }
+    },
+    verify() {
+      const filedsStatus = validate(this.ingridient);
+      const quantityStatus = validate(this.ingridient.quantity);
+      const isVerified = filedsStatus.isValid && quantityStatus.isValid;
+      const invalidFileds = [
+        ...filedsStatus.invalidFileds,
+        ...quantityStatus.invalidFileds
+      ];
+      return { isVerified, invalidFileds };
     },
     clearIngridient() {
       this.ingridient = EMPTY_INGRIDIENT();
@@ -58,20 +79,18 @@ export default {
       },
       deep: true
     }
-  },
-  computed: {
-    isVerified() {
-      const ingridient = this.ingridient;
-      const quantity = this.ingridient.quantity;
-
-      const filedsStatus = Object.keys(ingridient).every(key => isNotEmpty(ingridient[key]));
-      const quantityStatus = Object.keys(quantity).every(key => isNotEmpty(quantity[key]));
-
-      return filedsStatus && quantityStatus;
-    }
   }
 };
 
+function validate(object) {
+  const invalidFileds = [];
+  const isValid = Object.keys(object).every(key => {
+    const result = isNotEmpty(object[key]);
+    result || invalidFileds.push(key);
+    return result;
+  });
+  return { isValid, invalidFileds };
+}
 function isNotEmpty(string) {
   return string != "";
 }

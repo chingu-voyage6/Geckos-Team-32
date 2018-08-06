@@ -53,7 +53,7 @@
 import { mapActions } from "vuex";
 import { imageUploader } from "@/modules/firebase";
 import inputIngridient from "./inputIngridient";
-import { ERRORS } from "./errors";
+import { SUBMIT_ERRORS, getErrorMessage } from "./errors";
 
 export default {
   components: {
@@ -110,7 +110,7 @@ export default {
           .then(() => this.clear())
           .then(() => this.stopLoader());
       } else {
-        const message = this.getErrorMessage(invalidFields);
+        const message = this.getErrorMessage(invalidFields, SUBMIT_ERRORS);
         this.showPopup({ body: message });
       }
     },
@@ -143,13 +143,6 @@ export default {
       this.newRecipe.Ingredients = [];
       this.newRecipe.Directions = "";
       this.newRecipe.User = "";
-    },
-    getErrorMessage(fields) {
-      return fields.reduce((result, prop) => {
-        const errorPhrase = ERRORS[prop.toUpperCase()]; 
-        const separator = (fields.length = 1 ? "" : "and");
-        return `${result}${separator} ${errorPhrase}`;
-      }, "Please");
     }
   }
 };

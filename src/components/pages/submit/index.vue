@@ -110,7 +110,7 @@ export default {
           .then(() => this.clear())
           .then(() => this.stopLoader());
       } else {
-        const message = this.getErrorMessage(invalidFields, SUBMIT_ERRORS);
+        const message = getErrorMessage(invalidFields, SUBMIT_ERRORS);
         this.showPopup({ body: message });
       }
     },

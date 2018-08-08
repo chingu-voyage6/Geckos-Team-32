@@ -239,7 +239,7 @@ function isNotEmptyString(string) {
 .ingridient-list {
   display: flex;
   flex-direction: row;
-  padding: 20px 0;
+  padding: 10px 0 20px;
   margin: 0;
   list-style: none;
 

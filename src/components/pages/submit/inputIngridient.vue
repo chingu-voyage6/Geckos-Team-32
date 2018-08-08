@@ -100,12 +100,14 @@ function isNotEmpty(string) {
 .ingridient {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0 -10px;
 }
-.user-input-field:not(:last-child) {
-  margin-right: 10px;
-  width: 130px;
+.user-input-field {
+  margin: 0 10px 10px 10px;
 }
+
 .name {
   flex-grow: 1;
 }

@@ -89,6 +89,7 @@ input {
   width: 1.5em;
   height: 1.5em;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 .play {
   margin-left: 20px;
@@ -97,7 +98,6 @@ input {
 
 .searching {
   margin-right: 20px;
-
   background-image: url("./search-icon.png");
 }
 </style>

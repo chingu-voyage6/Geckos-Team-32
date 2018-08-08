@@ -64,11 +64,13 @@ export default {
   width: 100%;
   transition: 150ms ease-out;
   .title {
+    display: block;
     font-family: Nothing You Could Do;
     color: #d80404;
     font-size: 1.5em;
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
   }
 }
 .user-name {

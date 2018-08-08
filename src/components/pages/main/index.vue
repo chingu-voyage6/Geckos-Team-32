@@ -54,13 +54,15 @@ export default {
 <style scoped>
 .page-wrapper {
   position: relative;
+  margin: 0 40px;
   display: flex;
   flex-direction: column;
+  transition: all 1s ease-in-out;
 }
 .grid-container {
   align-items: center;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   grid-gap: 20px;
   width: 100%;
   justify-items: center;

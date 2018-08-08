@@ -35,7 +35,8 @@ export default {
       return this.getRecipes;
     },
     recipes() {
-      const list = this.recipeList.filter(recipe => ~recipe.Title.search(this.query));
+      const query = new RegExp(`${this.query}`,'i');
+      const list = this.recipeList.filter(recipe => ~recipe.Title.search(query));
       return list.length > 0 ? list : this.recipeList;
     }
   },

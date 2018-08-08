@@ -2,8 +2,9 @@
   <div class="page-wrapper">
     <search-box class="search"
                 @search="search"
+                @click.native.once="setGridHeight"
     ></search-box>      
-    <transition-group name="list" class="grid-container" tag="div">
+    <transition-group name="list" class="grid-container" tag="div" ref="grid" :style="{height:gridHeigth}">
       <recipe-item class="list-item" 
                    v-for="(recipe, index) in recipes" :key="recipe.id" 
                    :recipeData="recipe"
@@ -26,7 +27,8 @@ export default {
   },
   data() {
     return {
-      query: ""
+      query: "",
+      gridHeigth: "initial"
     };
   },
   computed: {
@@ -35,8 +37,10 @@ export default {
       return this.getRecipes;
     },
     recipes() {
-      const query = new RegExp(`${this.query}`,'i');
-      const list = this.recipeList.filter(recipe => ~recipe.Title.search(query));
+      const query = new RegExp(`${this.query}`, "i");
+      const list = this.recipeList.filter(
+        recipe => ~recipe.Title.search(query)
+      );
       return list.length > 0 ? list : this.recipeList;
     }
   },
@@ -47,6 +51,12 @@ export default {
     },
     search(search) {
       this.query = search.query;
+    },
+    setGridHeight(e) {
+      const initialHeight = this.$refs.grid.$el.offsetHeight;
+      this.gridHeigth = `${initialHeight}px`;
+      console.log(this.gridHeigth);
+      // console.log();
     }
   }
 };
@@ -61,7 +71,6 @@ export default {
   transition: all 1s ease-in-out;
 }
 .grid-container {
-  align-items: center;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   grid-gap: 20px;

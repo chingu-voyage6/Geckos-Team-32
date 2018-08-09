@@ -85,7 +85,6 @@ input {
 }
 .icon {
   display: block;
-  background-color: gray;
   width: 1.5em;
   height: 1.5em;
   background-size: contain;

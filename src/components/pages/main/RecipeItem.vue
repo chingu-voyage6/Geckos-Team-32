@@ -78,6 +78,6 @@ export default {
 }
 .image-container {
   width: 100%;
-
 }
+
 </style>

@@ -51,6 +51,7 @@ export default {};
   text-align: right;
 }
 .social-icon {
+  display: inline-block !important;
   height: 40px;
   margin: 12px;
   position: relative;

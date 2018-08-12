@@ -8,12 +8,10 @@
             <div class="col-sm-6  title">
                 <h1 class="titleText">Chez Gourmet</h1>
             </div>
-            <div class="col-sm-3">
-                <div class="social">
-                    <img src="./imgs/fb-icon.png" class="social-icon">
-                    <img src="./imgs/pinterest-icon.png" class="social-icon">
-                    <img src="./imgs/insta-icon.png" class="social-icon">
-                </div>
+            <div class="col-sm-3 social">
+                <img src="./imgs/fb-icon.png" class="social-icon">
+                <img src="./imgs/pinterest-icon.png" class="social-icon">
+                <img src="./imgs/insta-icon.png" class="social-icon">
             </div>
         </div>
     </div>
@@ -27,7 +25,7 @@ export default {};
 
 <style>
 .header-line {
-  height: 100px;
+  min-height: 100px;
 }
 
 .logo {
@@ -36,26 +34,28 @@ export default {};
   top: 8px;
   cursor: pointer;
 }
+.title{
+    margin: auto;
+}
 
 .titleText {
   text-align: center;
   font-family: "Oleo Script", cursive;
   font-size: 3.3em;
   letter-spacing: 3px;
-  position: relative;
-  top: 15px;
   color: rgb(216, 4, 4);
 }
 
 .social {
   text-align: right;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .social-icon {
   display: inline-block !important;
   height: 40px;
-  margin: 12px;
-  position: relative;
-  top: 20px;
+  margin: auto 12px;
 }
 
 .hero-img {

@@ -4,7 +4,7 @@
       <div class="title" >
         <h2>{{recipe.Title}} by <span>{{recipe.User}}</span></h2> 
       </div>
-      <div class="descritption">
+      <div class="description">
         <div class="image" >
           <img :src="recipe.ImageUrl" />
       </div>
@@ -47,11 +47,12 @@ export default {
 
 <style  lang="scss" scoped>
 .fade-enter-active {
-  transition: opacity .5s;
+  transition: opacity 0.5s;
   opacity: 1;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
@@ -61,13 +62,15 @@ export default {
   margin-bottom: 20px;
 }
 
-.descritption {
+.description {
   display: flex;
+  flex-basis: 500px;
+  justify-content: space-between;
 }
 
 .title {
   margin-top: 15px;
-  margin-bottom: 25px;;
+  margin-bottom: 25px;
   font-family: Oleo Script, cursive;
   color: #d80404;
   text-align: center;
@@ -76,7 +79,6 @@ export default {
 }
 
 .list {
-  width: 40%;
   flex-grow: 0.5;
 }
 
@@ -96,13 +98,32 @@ ul {
   font-size: 1.5em;
 }
 .image {
-  width: 50%;
-  margin: auto;
+  margin-right: 20px;
   text-align: center;
 }
-
 img {
   object-fit: contain;
-  max-height: 300px;
+  max-width: 500px;
+}
+
+@media screen and (max-width: 1024px) {
+  .image {
+    img {
+      max-width: 350px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .description {
+    flex-wrap: wrap;
+  }
+  .image {
+    width: 100%;
+    margin: auto auto 40px auto;
+    img {
+      width: 100%;
+    }
+  }
 }
 </style>

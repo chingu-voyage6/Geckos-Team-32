@@ -119,7 +119,7 @@ img {
     flex-wrap: wrap;
   }
   .image {
-    width: 100%;
+    max-width: 100%;
     margin: auto auto 40px auto;
     img {
       width: 100%;
